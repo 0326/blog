@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>动感小前端的博客</title>
-    <link>/quanfeng.tech/blog/index.xml</link>
+    <link>http://quanfeng.tech/blog/index.xml</link>
     <description>Recent content on 动感小前端的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Fri, 13 Jan 2017 01:34:50 +0800</lastBuildDate>
-    <atom:link href="/quanfeng.tech/blog/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://quanfeng.tech/blog/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>post test</title>
-      <link>/quanfeng.tech/blog/post/post-test/</link>
+      <link>http://quanfeng.tech/blog/post/post-test/</link>
       <pubDate>Fri, 13 Jan 2017 01:34:50 +0800</pubDate>
       
-      <guid>/quanfeng.tech/blog/post/post-test/</guid>
+      <guid>http://quanfeng.tech/blog/post/post-test/</guid>
       <description>&lt;p&gt;小时候喜欢看动画片，于是上课的时候经常在下面画画，梦想着当一名漫画家。由于漫画画的好，考上了当地最好的一所初中。城里比乡下好，眼界更加开阔了，觉得画漫画挣不了钱，于是梦想就进化成了一名动画师，要做出好多好看的动画片。后来觉得国漫太让人捉急了，做动画师无法拯救世界，于是梦想就超进化成了动画导演，要做一名像宫崎骏一样的大师，去影响世界。初中毕业时老师叫谈谈梦想，我说我想考XX美院，要从事动画媒体事业。老师说美院什么的是给土豪准备的，一般人想想就可以了，不要太认真。我认真地思考了一下，觉得老师说的好有道理，于是顺利的考上了当地最好的一所高中。从那以后上课再也不画漫画了，人变机智了，成绩也变好了，妈妈再也不用担心我学习了~&lt;/p&gt;
 
 &lt;p&gt;就这样，我顺利的考入了一所很基情的大学，梦想也被究极进化成了一名程序员，程序员，序员，猿……啊呜，现在，算是拿到了一份很不错的offer，找到了一份很适合自己的job，迭代的梦想就这样实现了，好高兴，好心塞。&lt;/p&gt;
