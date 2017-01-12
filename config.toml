@@ -1,5 +1,5 @@
 # Site settings
-baseurl = "quanfeng.tech/archive"
+baseurl = "http://quanfeng.tech/blog/"
 languageCode = "zh-CN"
 title = "动感小前端的博客"
 theme = "hugo-cactus-theme"

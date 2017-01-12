@@ -1,7 +1,7 @@
 +++
-date = "2017-01-13T00:44:58+08:00"
+date = "2017-01-13T01:34:50+08:00"
 title = "post test"
-draft = true
+draft = false
 
 +++
 
