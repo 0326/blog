@@ -9,9 +9,9 @@ googleAnalytics = ""
 disqusShortname = "动感小前端"
 
 [params]
-	name = "quanfeng.lqf"
+	name = "动感小前端"
 	description = "Web Dev"
-	bio = "Blogger - Programmer - Gopher"
+	bio = "coder && photographer && peregrinator && false"
 	# Enter optionally your twitter account
 	twitter = "Your Twitter account"
 	enableRSS = true
@@ -25,7 +25,7 @@ disqusShortname = "动感小前端"
 
 	# Navigation links
 	home = ""
-	about = ""
+	about = "about"
 	subscribe = ""
 	# Pagination links
 	olderPosts = ""
