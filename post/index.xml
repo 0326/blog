@@ -6,203 +6,1164 @@
     <description>Recent content in Posts on 动感小前端的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 13 Jan 2017 01:34:50 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 08 Jan 2017 21:42:50 +0800</lastBuildDate>
     <atom:link href="http://quanfeng.tech/blog/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>post test</title>
-      <link>http://quanfeng.tech/blog/post/post-test/</link>
-      <pubDate>Fri, 13 Jan 2017 01:34:50 +0800</pubDate>
+      <title>前端图像处理指南</title>
+      <link>http://quanfeng.tech/blog/post/img-proc-fe/</link>
+      <pubDate>Sun, 08 Jan 2017 21:42:50 +0800</pubDate>
       
-      <guid>http://quanfeng.tech/blog/post/post-test/</guid>
-      <description>&lt;p&gt;小时候喜欢看动画片，于是上课的时候经常在下面画画，梦想着当一名漫画家。由于漫画画的好，考上了当地最好的一所初中。城里比乡下好，眼界更加开阔了，觉得画漫画挣不了钱，于是梦想就进化成了一名动画师，要做出好多好看的动画片。后来觉得国漫太让人捉急了，做动画师无法拯救世界，于是梦想就超进化成了动画导演，要做一名像宫崎骏一样的大师，去影响世界。初中毕业时老师叫谈谈梦想，我说我想考XX美院，要从事动画媒体事业。老师说美院什么的是给土豪准备的，一般人想想就可以了，不要太认真。我认真地思考了一下，觉得老师说的好有道理，于是顺利的考上了当地最好的一所高中。从那以后上课再也不画漫画了，人变机智了，成绩也变好了，妈妈再也不用担心我学习了~&lt;/p&gt;
+      <guid>http://quanfeng.tech/blog/post/img-proc-fe/</guid>
+      <description>
 
-&lt;p&gt;就这样，我顺利的考入了一所很基情的大学，梦想也被究极进化成了一名程序员，程序员，序员，猿……啊呜，现在，算是拿到了一份很不错的offer，找到了一份很适合自己的job，迭代的梦想就这样实现了，好高兴，好心塞。&lt;/p&gt;
+&lt;p&gt;计算机图像处理是一门很成熟的技术，任何一门可操作系统接口的语言都能很轻易的实现各种处理操作。但是前端限于浏览器环境和接口限制，处理起来会有诸多不便，这里所说的前端图像处理，是真的指&lt;strong&gt;不借助任何后端服务&lt;/strong&gt;纯前端实现的图像处理。本文会介绍canvas位图处理，SVG矢量图和CSS3图像处理，重点是canvas，并且最后会附上一个&lt;a href=&#34;http://quanfeng.tech/trimpng/&#34;&gt;TrimPNG小应用&lt;/a&gt;。&lt;/p&gt;
 
-&lt;p&gt;前端&lt;/p&gt;
+&lt;h1 id=&#34;canvas位图处理&#34;&gt;canvas位图处理&lt;/h1&gt;
 
-&lt;p&gt;记得刚开始学前端的时候感觉倒是蛮简单的。我想正是因为如此底的门槛，导致许多程序员认为前端没有多大技术含量。但是，随着学习的深入，我发现前端比想象的要复杂的多。包括面试官也跟我说过，你所理解的前端还是过于狭隘，应该要看到更广阔的东西。举个很简单的例子：CSS。CSS曾被认为是设计师的语言，而不是程序员的语言，因为他的作用无非就是选择指定的标签加上样式效果，根本没有什么深入的东西。所以直到今天，仍然有很多人认为这是一门不用怎么学就可以精通的语言。从某种程度上讲，这样认为的，大部分只是新手或者没怎么写过web前端的人。真正要把这东西写好，从自身的表现，到与HTML/JS的配合，再到优化，提升团队效率等，是极不容易的。随着CSS的发展，她已不再是简单的标签语言，从代替table来布局，到响应式适配；从无章无法到模块化，甚至到SCSS/Stylus这些预处理器；从高级选择器到动画处理，再到像Google Material Design 页面间转场效果应用；从CSS icon sprite到icon font，再到svg/canvas的应用，她已不再是她（此段来自网络，说的好有道理)。CSS技术的发展并不只是增加一些新特性新接口这么简单，而是从根本上改变的CSS的开发方式。包括今年很火的AngularJS，简直颠覆了传统前端开发理念。这还只是冰山一角，前端的新技术层出不穷，比起其它技术领域变化都要快，这就注定一名前端工程师要是一个爱折腾的工程师。&lt;/p&gt;
+&lt;p&gt;HTML5 canvas为我们提供了一块画布，让前端也有了操作位图的功能：图片旋转、缩放、滤镜、压缩等都可以通过JS来实现。&lt;/p&gt;
 
-&lt;p&gt;前端涉及技术面非常广，但是并不“深”，这里的“深”并非说前端没有技术含量，而是说没有像诸如后台/系统工程师等深入计算机底层或算法研究。因此爱玩“深”技术的Geek们不愿意写前端，而爱设计的孩子们又不愿意写代码，所以将技术和设计完美结合在一起的任务就落在前端身上了。个人认为，前端的“深”不只是像一般程序员深入技术本身，也不是像设计师一样“深”入设计和交互，而是能兼顾两者，最终将产品以最完美的形态呈现给用户。因此，一个前端所要掌握的技能应该是要近乎全栈的：&lt;/p&gt;
+&lt;h3 id=&#34;图像基本处理&#34;&gt;图像基本处理&lt;/h3&gt;
 
-&lt;p&gt;HTML/CSS/JS等前端技术本身
-java/php/python/node 等服务端技术和脚本语言
-美术，设计和交互
-产品设计，毕竟是与用户最近的工程师
-除了第一项水很深之外，其他几项踩多深要看个人喜好。技术无止境，前端无下限，总之无限坑。&lt;/p&gt;
+&lt;p&gt;通过设置drawImage参数可以实现图片绘制、缩放、拉伸和裁剪等操作(&lt;code&gt;注意canvas无法绘制体积过大图片，否则会卡甚至崩掉，大图可以分块读取绘制&lt;/code&gt;)：&lt;/p&gt;
 
-&lt;p&gt;招聘&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xp4vm.com1.z0.glb.clouddn.com/canvas_drawImage_DEMO_-_JS_Bin.png-q80&#34; alt=&#34;图片描述&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;实习生招聘4月开始的吧，面试的第一家就是企鹅。人生的第一场面试啊~想想都好激动~。结果一面时就惨跪了…….于是又继续投了阿里，然后很开心的笔试就被刷了。后来又投了熊掌，一面过了，但是过了快一个月才来二面，由于是电面，而且当时信号差，电话断了四五次。还没面试完我就已经心凉了。大公司想是没戏了，于是直奔小公司。等拿到实习offer的时候，居然又接到了熊掌公司的电话，说有个三面……呵呵，当时就尴尬了，这么捉弄我，我还不去了……&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;详细用法参考 &lt;a href=&#34;https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/drawImage&#34;&gt;drawImage()&lt;/a&gt;，DEMO源码戳这里 &lt;a href=&#34;http://jsbin.com/nuqojowayi/edit?html,output&#34;&gt;JS Bin&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;p&gt;于是7月份去了广州实习。刚“出世”时总是带着几分好奇和激情，很认真的去学习去工作。每天都很规律，日子也过得安逸，于是没过多久，这种规律和安逸变成了无聊。它迫使你去思考一些东西。这些东西不是你在这里是否有良好发展前景，你能否在这里升职加薪，因为这些问题在找工作前就应该考虑到。所以让我更迷茫的是：这是否就是我今后的生活？&lt;/p&gt;
+&lt;p&gt;只需要drawImage一个方法，就可以实现基本图形处理功能，再结合鼠标或滚轮事件，就可以实现更复杂的局部放大预览，缩放等功能了。&lt;/p&gt;
 
-&lt;p&gt;广州的气候属于湿热型，夏天在外面呆着感觉就像做天然桑拿一样。可能是自己习惯了干热型气候，对于这种城市只能归类为“不适宜居住”的城市之列。不过抛去“自然”因素，羊城的“人文”特色倒是蛮吸引人的，比起大武汉要好玩的多，除去“热带风情”，岭南文化，城建特色这些东西，印象最为深刻的就是————在这里买衣服都好便宜！！！&lt;/p&gt;
+&lt;h3 id=&#34;图像滤镜处理&#34;&gt;图像滤镜处理&lt;/h3&gt;
 
-&lt;p&gt;实习公司在软件园那边，每天朝九晚六，近一个多月时间，其实有一大半的时间在进行培训学习。我是测试开发，正规工作其实就是玩游戏，写测试用例和脚本。工作难度并不大，同事们也都很好(几乎都是漂亮妹子~)对于一个应届生来说，能有个月薪过万，工作还很轻松的job应该算是不错了，可就是这样过于“安稳”的工作，让我感觉是在浪费青春。&lt;/p&gt;
+&lt;p&gt;现在的朋友圈发个图都要用滤镜美一下，复古清纯胶片LOMO各种风格应有尽有。canvas提供了getImageData方法来获取图像上每一个像素点的RGBA信息，这样我们就能对图片进行像素级处理了。通过特定算法来重写imageData中的像素信息，然后用setImageData方法把新的数据重新绘制在canvas上，这样就可以实现图像滤镜打码加特效等一系列功能。&lt;/p&gt;
 
-&lt;p&gt;进一步来看，只要选择工作，无论是在大公司还是小公司，每天必定都是按部就班的，虽然工作上会让你遵循DRY原则，但是生活上其实每天都在Reapt Yourself。这是一个普遍问题，读书，工作，谈恋爱，如果不是真爱，早晚得分开。于是乎我又花了几个星期来调整心态和思考人生（此处省略千万字），最终辞了广州的实习，9月份回学校参加校园招聘。&lt;/p&gt;
+&lt;p&gt;比如我们现在要实现一个复古滤镜:&lt;/p&gt;
 
-&lt;p&gt;实招的时候其实还蛮迷茫的，不知道自己真正适合什么，四家公司投了四个不同的岗位(后台，系统，测试，产品都投了，现在想想真是吓死了)。校招的时候就明确多了，只投了前端开发，顺利拿到了阿里的offer。面试过程还是蛮顺利的，阿里的面试效率是我见过的公司中最高的，三轮面试一个上午就结束了。至于招聘要求，大概是笔试的时候会pass掉专业基础不行的，一面会pass技术不成熟和表达能力不行的，二面会pass没有亮点的，三面pass人品不行的(应该不会有人死在这里吧…)，如果是特别牛逼人还会有个交叉技术面试。所以最终能够通过面试的大多是研究生，想我一本科生能走到这里，也是蛮幸运的。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;// 复古滤镜处理算法：获取每个像素的RGB信息，并按特定权重返回其加权平均值
+let sepiaFilter = function(imgData) {
+  let d = imgData.data
+  for (let i = 0; i &amp;lt; d.length; i += 4) {
+    let r = d[i]
+    let g = d[i + 1]
+    let b = d[i + 2]
+    d[i] = (r * 0.393) + (g * 0.769) + (b * 0.189) // red
+    d[i + 1] = (r * 0.349) + (g * 0.686) + (b * 0.168) // green
+    d[i + 2] = (r * 0.272) + (g * 0.534) + (b * 0.131) // blue
+  }
+  return imgData
+}
+//图像地址必须和当前页面同域，否则会报cross-origin错误 
+img.src = &#39;/img/logo@2x.png&#39; 
+img.onload = () =&amp;gt; {
+  ctx.drawImage(img, 0, 0) // 绘制原图
+  let imgData = ctx.getImageData(0, 0, img.width, img.height) // 获取图片信息
+  ctx.putImageData(sepiaFilter(imgData), 100, 0) // 绘制处理后图片
+}
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;之后又拒绝了两家公司的面试邀请，因为我很清楚我现在想要的是什么，以及以现在的能力我能做什么。总的来说，整个招聘期间只面了四家公司，一家失败，一家放弃，两家成功。没有像那些大神一样当offer收割机，一是人家确实牛逼，我等望尘莫及;二是，总感觉这种行为就跟找备胎一样，好不道德。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://segmentfault.com/img/bVHTYo&#34; alt=&#34;图片描述&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;未来&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;详细用法参考 &lt;a href=&#34;https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/getImageData&#34;&gt;getImageData()&lt;/a&gt; 和  &lt;a href=&#34;https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/putImageData&#34;&gt;putImageData()&lt;/a&gt;，DEMO源码戳这里 &lt;a href=&#34;https://jsfiddle.net/vghszt61/2/&#34;&gt;JSFiddle&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;p&gt;这一路走来不容易，但都在计划之中。遇到过各种各样的人，无论是相信我的还是怀疑我的，都要谢谢你们。当你处在人生低谷时，当你正在执着追求着自己想要的东西时，很容易会引来周围怀疑的目光与轻视，可悲的是这些目光不是来自陌生人，而是来自身边的亲戚和朋友。大学给了我们充足的时间去思考自己的未来将会是怎样一种人生，如果觉得时间不够，可以花更多的时间都没关系。无论是工作，读研，还是创业，找到最适合自己的才是最好的，或许现在所处的状态并不如意，或许现在正处在最艰难的时期，或许就算一直努力也不会有结果，但如果现在放弃了，就会一无所有。&lt;/p&gt;
+&lt;p&gt;滤镜处理关键在于滤镜算法，要想写出更高级的特效需要有计算机图形学基础，对卷积矩阵、拉普拉斯变换、傅里叶变换等数学知识也要了解，这个坑很大我就不挖了。&lt;/p&gt;
 
-&lt;p&gt;最后，借马云IPO路演时一句话：今天很不容易，明天更加困难，但是未来是无限美好的。因此，我们必须更加努力，才能够在未来的漫漫征程中赢得胜利。
-小时候喜欢看动画片，于是上课的时候经常在下面画画，梦想着当一名漫画家。由于漫画画的好，考上了当地最好的一所初中。城里比乡下好，眼界更加开阔了，觉得画漫画挣不了钱，于是梦想就进化成了一名动画师，要做出好多好看的动画片。后来觉得国漫太让人捉急了，做动画师无法拯救世界，于是梦想就超进化成了动画导演，要做一名像宫崎骏一样的大师，去影响世界。初中毕业时老师叫谈谈梦想，我说我想考XX美院，要从事动画媒体事业。老师说美院什么的是给土豪准备的，一般人想想就可以了，不要太认真。我认真地思考了一下，觉得老师说的好有道理，于是顺利的考上了当地最好的一所高中。从那以后上课再也不画漫画了，人变机智了，成绩也变好了，妈妈再也不用担心我学习了~&lt;/p&gt;
+&lt;h3 id=&#34;图像base64存储&#34;&gt;图像base64存储&lt;/h3&gt;
 
-&lt;p&gt;就这样，我顺利的考入了一所很基情的大学，梦想也被究极进化成了一名程序员，程序员，序员，猿……啊呜，现在，算是拿到了一份很不错的offer，找到了一份很适合自己的job，迭代的梦想就这样实现了，好高兴，好心塞。&lt;/p&gt;
+&lt;p&gt;加完特效后如果我们想把图像保存下来，就可以用toDataURL方法来对图片进行格式转换、压缩存储了。&lt;/p&gt;
 
-&lt;p&gt;前端&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;// 支持三种文件类型：image/png(默认) | image/jpeg | image/webp(仅Chrome)
+canvas.toDataURL() // 默认存储为png
+// 仅jpeg/webp支持质量参数(0~1,默认0.92)
+canvas.toDataURL(&amp;quot;image/jpeg&amp;quot;, 0.1) // 存储为质量为0.1的jpeg
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;记得刚开始学前端的时候感觉倒是蛮简单的。我想正是因为如此底的门槛，导致许多程序员认为前端没有多大技术含量。但是，随着学习的深入，我发现前端比想象的要复杂的多。包括面试官也跟我说过，你所理解的前端还是过于狭隘，应该要看到更广阔的东西。举个很简单的例子：CSS。CSS曾被认为是设计师的语言，而不是程序员的语言，因为他的作用无非就是选择指定的标签加上样式效果，根本没有什么深入的东西。所以直到今天，仍然有很多人认为这是一门不用怎么学就可以精通的语言。从某种程度上讲，这样认为的，大部分只是新手或者没怎么写过web前端的人。真正要把这东西写好，从自身的表现，到与HTML/JS的配合，再到优化，提升团队效率等，是极不容易的。随着CSS的发展，她已不再是简单的标签语言，从代替table来布局，到响应式适配；从无章无法到模块化，甚至到SCSS/Stylus这些预处理器；从高级选择器到动画处理，再到像Google Material Design 页面间转场效果应用；从CSS icon sprite到icon font，再到svg/canvas的应用，她已不再是她（此段来自网络，说的好有道理)。CSS技术的发展并不只是增加一些新特性新接口这么简单，而是从根本上改变的CSS的开发方式。包括今年很火的AngularJS，简直颠覆了传统前端开发理念。这还只是冰山一角，前端的新技术层出不穷，比起其它技术领域变化都要快，这就注定一名前端工程师要是一个爱折腾的工程师。&lt;/p&gt;
+&lt;p&gt;由于存储形式是base64编码，原来图片的每三个字节都会被扩展成4字节，所以整体上编码后数据会比原来多约1/3。以下是通过toDataURL存储后的图片和原图大小相关对比数据(&lt;code&gt;数据仅供参考，不具通用性&lt;/code&gt;)：&lt;/p&gt;
 
-&lt;p&gt;前端涉及技术面非常广，但是并不“深”，这里的“深”并非说前端没有技术含量，而是说没有像诸如后台/系统工程师等深入计算机底层或算法研究。因此爱玩“深”技术的Geek们不愿意写前端，而爱设计的孩子们又不愿意写代码，所以将技术和设计完美结合在一起的任务就落在前端身上了。个人认为，前端的“深”不只是像一般程序员深入技术本身，也不是像设计师一样“深”入设计和交互，而是能兼顾两者，最终将产品以最完美的形态呈现给用户。因此，一个前端所要掌握的技能应该是要近乎全栈的：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://7xp4vm.com1.z0.glb.clouddn.com/yy.jpg&#34; alt=&#34;图片描述&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;HTML/CSS/JS等前端技术本身
-java/php/python/node 等服务端技术和脚本语言
-美术，设计和交互
-产品设计，毕竟是与用户最近的工程师
-除了第一项水很深之外，其他几项踩多深要看个人喜好。技术无止境，前端无下限，总之无限坑。&lt;/p&gt;
+&lt;p&gt;可见存储后图片体积并不是原来的4/3，实际上处理后的图片都会比原图大好几倍，并且不同的图片增大的体积也是不确定的。如果是要上传图片到服务器，可以把base64转化成Blob二进制数据压缩上传；如果要直接在前端显示或供用户下载，jpg还好可以设置质量参数，要是png就没法压缩了。&lt;/p&gt;
 
-&lt;p&gt;招聘&lt;/p&gt;
+&lt;p&gt;只是用toDataURL还不够，用户需要通过&lt;code&gt;手动点击图片-右键图片存储为&lt;/code&gt;来保存图片，如果要实现点击下载按钮自动下载图片还需要修改图片类型为octet-stream，然后利用HTML5的download属性强制让浏览器下载。&lt;/p&gt;
 
-&lt;p&gt;实习生招聘4月开始的吧，面试的第一家就是企鹅。人生的第一场面试啊~想想都好激动~。结果一面时就惨跪了…….于是又继续投了阿里，然后很开心的笔试就被刷了。后来又投了熊掌，一面过了，但是过了快一个月才来二面，由于是电面，而且当时信号差，电话断了四五次。还没面试完我就已经心凉了。大公司想是没戏了，于是直奔小公司。等拿到实习offer的时候，居然又接到了熊掌公司的电话，说有个三面……呵呵，当时就尴尬了，这么捉弄我，我还不去了……&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;详细用法参考&lt;a href=&#34;https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLCanvasElement/toDataURL&#34;&gt;toDataURL()&lt;/a&gt;. 自动下载图片DEMO源码快戳我 &lt;a href=&#34;https://jsfiddle.net/0326/vghszt61/4/#&#34;&gt;JSFiddle&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;p&gt;于是7月份去了广州实习。刚“出世”时总是带着几分好奇和激情，很认真的去学习去工作。每天都很规律，日子也过得安逸，于是没过多久，这种规律和安逸变成了无聊。它迫使你去思考一些东西。这些东西不是你在这里是否有良好发展前景，你能否在这里升职加薪，因为这些问题在找工作前就应该考虑到。所以让我更迷茫的是：这是否就是我今后的生活？&lt;/p&gt;
+&lt;h3 id=&#34;程序员的备胎&#34;&gt;程序员的备胎&lt;/h3&gt;
 
-&lt;p&gt;广州的气候属于湿热型，夏天在外面呆着感觉就像做天然桑拿一样。可能是自己习惯了干热型气候，对于这种城市只能归类为“不适宜居住”的城市之列。不过抛去“自然”因素，羊城的“人文”特色倒是蛮吸引人的，比起大武汉要好玩的多，除去“热带风情”，岭南文化，城建特色这些东西，印象最为深刻的就是————在这里买衣服都好便宜！！！&lt;/p&gt;
+&lt;p&gt;有了以上基础，再结合成熟的图形处理算法，我们可以完成日常工作中大部分图像处理需求，以下列出了一些相关轮子可做备胎。备胎这种东西多多益善，万一以后用到了呢？&lt;/p&gt;
 
-&lt;p&gt;实习公司在软件园那边，每天朝九晚六，近一个多月时间，其实有一大半的时间在进行培训学习。我是测试开发，正规工作其实就是玩游戏，写测试用例和脚本。工作难度并不大，同事们也都很好(几乎都是漂亮妹子~)对于一个应届生来说，能有个月薪过万，工作还很轻松的job应该算是不错了，可就是这样过于“安稳”的工作，让我感觉是在浪费青春。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;注意：本人很专一。&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;进一步来看，只要选择工作，无论是在大公司还是小公司，每天必定都是按部就班的，虽然工作上会让你遵循DRY原则，但是生活上其实每天都在Reapt Yourself。这是一个普遍问题，读书，工作，谈恋爱，如果不是真爱，早晚得分开。于是乎我又花了几个星期来调整心态和思考人生（此处省略千万字），最终辞了广州的实习，9月份回学校参加校园招聘。&lt;/p&gt;
+&lt;h4 id=&#34;html2canvas-http-html2canvas-hertzen-com-documentation-html&#34;&gt;&lt;a href=&#34;http://html2canvas.hertzen.com/documentation.html&#34;&gt;html2canvas&lt;/a&gt;&lt;/h4&gt;
 
-&lt;p&gt;实招的时候其实还蛮迷茫的，不知道自己真正适合什么，四家公司投了四个不同的岗位(后台，系统，测试，产品都投了，现在想想真是吓死了)。校招的时候就明确多了，只投了前端开发，顺利拿到了阿里的offer。面试过程还是蛮顺利的，阿里的面试效率是我见过的公司中最高的，三轮面试一个上午就结束了。至于招聘要求，大概是笔试的时候会pass掉专业基础不行的，一面会pass技术不成熟和表达能力不行的，二面会pass没有亮点的，三面pass人品不行的(应该不会有人死在这里吧…)，如果是特别牛逼人还会有个交叉技术面试。所以最终能够通过面试的大多是研究生，想我一本科生能走到这里，也是蛮幸运的。&lt;/p&gt;
+&lt;p&gt;将web页面通过canvas来实现截屏，其原理就是遍历DOM结构和样式，然后在canvas中绘制出来，通过toDataURL输出图片。但由于canvas图片的同源策略限制，如果图片和网站不同源的话会截取不出来的。另外在微信中测试时，即使用同源的图片截取出来的图片也有问题，所以要想将其用于生产环境，还是得看场景，有很多坑要踩。&lt;/p&gt;
 
-&lt;p&gt;之后又拒绝了两家公司的面试邀请，因为我很清楚我现在想要的是什么，以及以现在的能力我能做什么。总的来说，整个招聘期间只面了四家公司，一家失败，一家放弃，两家成功。没有像那些大神一样当offer收割机，一是人家确实牛逼，我等望尘莫及;二是，总感觉这种行为就跟找备胎一样，好不道德。&lt;/p&gt;
+&lt;h4 id=&#34;code-to-image-https-github-com-akira-cn-code-to-image&#34;&gt;&lt;a href=&#34;https://github.com/akira-cn/code-to-image&#34;&gt;code-to-image&lt;/a&gt;&lt;/h4&gt;
 
-&lt;p&gt;未来&lt;/p&gt;
+&lt;p&gt;代码转图片工具。有时候你在不同的平台写文章贴代码，由于不同平台代码格式化规范不一，所以经常会出现代码排版问题，通过这个工具将代码转成图片就可以避免排版问题了。&lt;/p&gt;
 
-&lt;p&gt;这一路走来不容易，但都在计划之中。遇到过各种各样的人，无论是相信我的还是怀疑我的，都要谢谢你们。当你处在人生低谷时，当你正在执着追求着自己想要的东西时，很容易会引来周围怀疑的目光与轻视，可悲的是这些目光不是来自陌生人，而是来自身边的亲戚和朋友。大学给了我们充足的时间去思考自己的未来将会是怎样一种人生，如果觉得时间不够，可以花更多的时间都没关系。无论是工作，读研，还是创业，找到最适合自己的才是最好的，或许现在所处的状态并不如意，或许现在正处在最艰难的时期，或许就算一直努力也不会有结果，但如果现在放弃了，就会一无所有。&lt;/p&gt;
+&lt;h4 id=&#34;cropper-https-fengyuanchen-github-io-cropper&#34;&gt;&lt;a href=&#34;https://fengyuanchen.github.io/cropper/&#34;&gt;Cropper&lt;/a&gt;&lt;/h4&gt;
 
-&lt;p&gt;最后，借马云IPO路演时一句话：今天很不容易，明天更加困难，但是未来是无限美好的。因此，我们必须更加努力，才能够在未来的漫漫征程中赢得胜利。&lt;/p&gt;
+&lt;p&gt;一个专门用来做图片裁剪的应用。&lt;/p&gt;
+
+&lt;h4 id=&#34;tracking-js-https-github-com-eduardolundgren-tracking-js&#34;&gt;&lt;a href=&#34;https://github.com/eduardolundgren/tracking.js/&#34;&gt;tracking.js&lt;/a&gt;&lt;/h4&gt;
+
+&lt;p&gt;这是一个专业的计算机视觉处理JS库，包含了大量图形处理算法，可用来做人脸识别，色彩追踪等酷炫功能。&lt;/p&gt;
+
+&lt;h4 id=&#34;qrcode2-https-github-com-nicolaszhao-qrcode2&#34;&gt;&lt;a href=&#34;https://github.com/nicolaszhao/qrcode2&#34;&gt;qrcode2&lt;/a&gt;&lt;/h4&gt;
+
+&lt;p&gt;用JS动态生成二维码，这个库还是很实用的，原理就是qrcode算法+canvas绘图，不支持canvas的用table兼容。&lt;/p&gt;
+
+&lt;h4 id=&#34;alloyimage-https-github-com-alloyteam-alloyimage&#34;&gt;&lt;a href=&#34;https://github.com/AlloyTeam/AlloyImage&#34;&gt;AlloyImage&lt;/a&gt;&lt;/h4&gt;
+
+&lt;p&gt;腾讯出的基于HTML5的专业级图像处理开源引擎，功能很强大，简直就是Web版的PS。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://img.alicdn.com/tps/TB1qqF.PXXXXXXFXXXXXXXXXXXX-1381-597.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;以上列举部分，更多备胎在此： &lt;a href=&#34;https://github.com/0326/canvas&#34;&gt;https://github.com/0326/canvas&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;svg矢量图处理&#34;&gt;SVG矢量图处理&lt;/h1&gt;
+
+&lt;p&gt;讲完位图再说矢量图。矢量图在绘制图标、商业LOGO、动画元素上应用非常广范。Web最开始支持的矢量图形并不是现在的SVG，而是微软主推的VML，所以在低版本IE下面只支持VML而不支持SVG，直到后来SVG成为W3C标准并被普及，微软才在IE9中支持SVG。&lt;/p&gt;
+
+&lt;p&gt;SVG遵循XML规范，可以很好的集成在HTML里面，同时支持JS脚本控制，还有基于SMIL标准的动态内容支持，做起动画来也是非常方便。目前基于SVG的JS图形库轮子也是非常多，如&lt;a href=&#34;https://github.com/svgdotjs/svg.js&#34;&gt;svg.js&lt;/a&gt;, &lt;a href=&#34;http://snapsvg.io/&#34;&gt;Snap.svg&lt;/a&gt;, &lt;a href=&#34;http://velocityjs.org/&#34;&gt;Velocity.js&lt;/a&gt;, &lt;a href=&#34;https://d3js.org&#34;&gt;D3.js&lt;/a&gt;等等，目前暂无SVG应用需求，等用的时候再翻牌子吧。&lt;/p&gt;
+
+&lt;h1 id=&#34;css图像处理&#34;&gt;CSS图像处理&lt;/h1&gt;
+
+&lt;p&gt;如果你的图像特效只是用来给用户展示，并不需要存储的话，可以直接用CSS处理，基本的调整图片大小、拉伸、旋转、裁切等操作直接几个CSS属性width/height/skew/rotate/clip-path等就能搞定了。如果想加特效，使用CSS滤镜Duang的一下就出来了，不需要任何图形学基础和数学知识：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://img.alicdn.com/tps/TB19.p3PXXXXXc0XXXXXXXXXXXX-989-957.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;详细说明见 &lt;a href=&#34;https://developer.mozilla.org/zh-CN/docs/Web/CSS/filter&#34;&gt;CSS filter - MDN&lt;/a&gt;, &lt;a href=&#34;http://jsbin.com/cejifa/edit?html,output&#34;&gt;DEMO 源码见JS Bin&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&#34;总结&#34;&gt;总结&lt;/h1&gt;
+
+&lt;p&gt;最后介绍个小工具&lt;a href=&#34;http://quanfeng.tech/trimpng/&#34;&gt;TrimPNG&lt;/a&gt;。大家都知道&lt;a href=&#34;https://tinypng.com/&#34;&gt;TinyPNG&lt;/a&gt;可以压缩PNG, &lt;a href=&#34;http://quanfeng.tech/trimpng/&#34;&gt;TrimPNG&lt;/a&gt;顾名思义就是去除图片空白和白边的，实现了自动抠图和切图的功能（logo我是直接抄的TinyPNG，都是熊猫，应该不要紧😝）&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://segmentfault.com/img/bVHV0v&#34; alt=&#34;图片描述&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;用到的技术点上面都说到了，裁切实现原理就是横向纵向分别扫描两次像素点阵，找出上下左右最外面的非透明点，然后定位出有效图像区域。&lt;del&gt;去除白边算法目前还比较傻逼，只要是接近白色的点都被我干掉了，后面再完善好了&lt;/del&gt; 去白边算法优化了一下，采用标记清除策略（听着耳熟吧，其实就是从GC受的启发&amp;hellip;），先扫描一遍标记出可疑白点，然后再扫描一遍，凡是与透明区域相邻的可疑白点就清除，当然这个算法也比较死，如果有更专业更智能的请务必告诉我。&lt;/p&gt;
+
+&lt;p&gt;体验地址：&lt;a href=&#34;http://quanfeng.tech/trimpng/&#34;&gt;http://quanfeng.tech/trimpng/&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;本文只抛砖，作为工作时技能储备，如有任何补充欢迎留言交流：）&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>类型系统-前端进化的里程碑</title>
+      <link>http://quanfeng.tech/blog/post/typesys-in-fe/</link>
+      <pubDate>Fri, 23 Sep 2016 01:42:50 +0800</pubDate>
+      
+      <guid>http://quanfeng.tech/blog/post/typesys-in-fe/</guid>
+      <description>
+
+&lt;p&gt;大半夜的JavaScript Weekly发来贺电：&lt;a href=&#34;https://blogs.msdn.microsoft.com/typescript/2016/09/22/announcing-typescript-2-0/#comment-26185&#34;&gt;TypeScript 2.0 Final Released！&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;没错，继Angular2发布之后，TypeScript今天也发布了2.0版本，这不禁让我浮想一番。如果要说TS和JS最明显的差别，我想一定是Type System，所以今天我们就聊聊类型系统在前端发展历程中，到底扮演了怎样的角色。&lt;/p&gt;
+
+&lt;h2 id=&#34;历史斗争&#34;&gt;历史斗争&lt;/h2&gt;
+
+&lt;p&gt;如果要你把PV上百万级别的Web Application用一门在10天内撸出来的编程语言来开发，我想你肯定不会放心的。然而事实上我们现在都是这样干的，JS已经成为了最流行的编程语言。JS现在所承担的使命已经完全超出了当年设计的初衷，虽然TC39一直在填坑，并且发展到如今的ES6已经相当成熟了，但仍然留下了一些历史包袱，并不能改变这是一门动态弱类型脚本语言的实质。&lt;/p&gt;
+
+&lt;p&gt;因此在前端工程化不断壮大的过程中，为了避免踩坑，人类同JS最佳编码实践方式展开了旷日持久的战争。&lt;/p&gt;
+
+&lt;p&gt;最开始，大家都只是取其精华，去其糟粕，如《JavaScript语言精粹》一书所说：你们只需要用我说的就好了，其他的垃圾都不要学，并且千万不要在项目里面用。&lt;/p&gt;
+
+&lt;p&gt;一般情况下每个公司都会出一套最佳实践的编码规范，程序员需要统一代码风格，按约定编写代码。但规范的约束力很低，结果在项目赶着上线的情况下还是写出了翔一样的代码，所以更好的方式是用工具来规范代码，发现一些潜在问题，通过工具来强制约定编码。比如JSLint，JSHint，以及ESLint，都是设定了一系列编码约定，让你避免写出一些糟糕的代码。&lt;/p&gt;
+
+&lt;p&gt;另外一种思路，就是抛弃使用JS作为开发语言，或者只是把他当成“JVM”,然后采用另外一种设计更加严谨，不容易采坑的语言来编程，比如CoffeeScript和TypeScript,开发完后再转译成JS来运行。&lt;/p&gt;
+
+&lt;p&gt;如果觉得这种方式过于激进，那么可以采用渐进的方式，比如Flow。Flow可以在开发时对代码进行静态类型分析，用写强类型的方式来写弱类型的JS。实质上这有很多好处：
+1. 强制声明类型，IDE和编辑器可以通过静态类型分析发现代码隐藏缺陷，同时也能够提供更强大的自动补全，智能代码提示和纠错，达到Java/C++级别的开发体验。
+2. 可避免类型隐式转换带来的消耗，提高运行效率。实际上JS引擎在运行时很大的开销都花在类型分析上。
+3. 可读性/可维护性增强。一眼就能看出这个变量是String还是Number，代码维护也更清晰，并且通过注释工具生成的代码注释也会更加详细，后面换人维护时也更容易上手。&lt;/p&gt;
+
+&lt;p&gt;这些优势，其实都是类型系统所带来的强类型语言所具有的开发优势，无论是在开发体验还是后期项目维护上，都要优于目前的JavaScript。&lt;/p&gt;
+
+&lt;p&gt;接下来，我们就以渐进的方式，来感受一下类型系统带给我们的好处。&lt;/p&gt;
+
+&lt;h2 id=&#34;类型系统&#34;&gt;类型系统&lt;/h2&gt;
+
+&lt;h3 id=&#34;flow-js&#34;&gt;Flow.js&lt;/h3&gt;
+
+&lt;p&gt;很多情况下我们都是在维护项目，不可能为了增加类型检查来修改老的项目代码。Flow可以在不修改代码的情况下，通过注释的方式来进行静态类型分析，这为我们提供了一个很好的过渡方式。你可以随时在任一个项目里面集成Flow。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;/*
+* @flow 
+* 只需要在文件头部添加flow注释，Flow就会认为这个文件需要静态分析并检查
+*/
+
+function foo(x) {
+  return x * 10;
+}
+
+// 这样调用Flow就会给出错误提示：string和number类型不兼容
+foo(&#39;Hello, world!&#39;); 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这种无侵入式的集成，可以检测出一些比较低级的错误，如果要支持更多强大的分析，就需要写侵入代码了，比如手动类型注释：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;/* 
+* @flow 
+* var : [type] 指定变量类型
+*/
+
+function add(num1: number, num2: number): number {
+  return num1 + num2;
+}
+
+// 这样调用就会报错，因为参数2已经被声明为number了
+var x: number = add(3, &#39;0&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这样的代码是不能直接运行的，还是需要Flow工具转译成原生JS才能执行。这种方式就更适合新的项目，一旦新项目直接集成了Flow套餐，就可以直接使用Flow支持的更多功能，并且配合IDE给出更好的开发体验。&lt;/p&gt;
+
+&lt;p&gt;以Mac下的VSC为例，首先安装本地Flow环境：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;brew update
+brew install flow
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后在VSC中安装启用vscode-flow插件,  ⌘+&amp;rsquo; 打开用户配置，禁用VSC自带的JavaScript校验功能(设置javascript.validate.enable为 false)，并设置好flow的安装目录：
+&lt;img src=&#34;//segmentfault.com/img/bVDu2Y&#34; alt=&#34;图片描述&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;剩下的套路就跟Babel，ESLint一样了，在项目根目录下面建立一个.flowconfig文件，配置一些校验规则：
+&lt;img src=&#34;//segmentfault.com/img/bVDsq4&#34; alt=&#34;图片描述&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;vscode-flow插件检测到.flowconfig配置后就会启动flow服务去实时分析项目代码，当你开发的时候就能感受到比原生编辑器更加强大的自动补全和智能提示了。比如当你require一个util模块时，flow能分析出util模块内结构，并且当你调用util方法不当时给出提示：
+&lt;img src=&#34;//segmentfault.com/img/bVDu4k&#34; alt=&#34;图片描述&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;以上只是介绍简单流程，并且还是无侵入式的校验，如果再加上手动类型声明的话，还能提供更多功能。&lt;/p&gt;
+
+&lt;h3 id=&#34;typescript&#34;&gt;TypeScript&lt;/h3&gt;
+
+&lt;p&gt;TS的做法更彻底，如果有一个全新的项目可以自由选择技术方案的话，我一定会选TypeScript而不是Flow.js。可惜的是，在公司里面大部分时候都依赖公司自身的技术体系，在做技术选型的时候都要依赖团队的技术栈。就比如大家都用ES6，你选择TypeScript，那么之后别人来维护你的代码成本就非常高，除非你能煽动整个团队，整个集团使用：）一般情况下这是不可能的，我想这也是TS难以普及的重要原因。&lt;/p&gt;
+
+&lt;p&gt;但是，这并不妨碍TypeScript成为一门优雅的前端开发语言。ES6有的它都有，ES6没有他也有（泛型/枚举/类型推导等只有强类型语言才有的一些特性），而这些特性恰恰更加适合日益壮大的工程化的前端，适合编写出可维护性代码。再配合微软自家的VSC，开发体验妥妥的：
+&lt;img src=&#34;//segmentfault.com/img/bVDvaS&#34; alt=&#34;图片描述&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;至于TypeScript 2.0带来了哪些新特性，请直接戳GitHub：
+&lt;a href=&#34;https://github.com/Microsoft/TypeScript/wiki/What%27s-new-in-TypeScript&#34;&gt;https://github.com/Microsoft/TypeScript/wiki/What%27s-new-in-TypeScript&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;未来趋势&#34;&gt;未来趋势&lt;/h2&gt;
+
+&lt;p&gt;前几日GitHub 发布了2016开源报告，JavaScript众望所归的荣登榜首，让众前端激动不已：
+&lt;img src=&#34;//segmentfault.com/img/bVDsql&#34; alt=&#34;图片描述&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;然而让我意外的不是排在第一的JavaScript，而是最后的TypeScript：
+&lt;img src=&#34;//segmentfault.com/img/bVDsqn&#34; alt=&#34;图片描述&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;//segmentfault.com/img/bVDsqo&#34; alt=&#34;图片描述&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;看这增长趋势，微软是要协TypeScript在开源之路上越走越远了。&lt;/p&gt;
+
+&lt;p&gt;私认为，无论最后是不是TypeScript，类型系统都带来了更好的开发体验，代码质量，代码可读性和可维护性，这正是一个大型或长期项目所必须的，也是现在和未来的前端工程所需要的。所以实在是没有不学的理由，如果你觉得TypeScript像极了C#更适合后端程序员，那么学习它或许是你迈向全栈的一小步哈哈。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Web 字体应用指南最佳实践修炼之道（上）</title>
+      <link>http://quanfeng.tech/blog/post/web-font-01/</link>
+      <pubDate>Sun, 21 Aug 2016 21:42:50 +0800</pubDate>
+      
+      <guid>http://quanfeng.tech/blog/post/web-font-01/</guid>
+      <description>
+
+&lt;p&gt;&lt;img src=&#34;http://upload-images.jianshu.io/upload_images/1665040-7dbfec5bc0c6c8c9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&#34; alt=&#34;据说把名字取得特别长更容易被搜索到&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;据说把名字取得特别长更容易被搜索到。&lt;/p&gt;
+
+&lt;p&gt;故事的起源，要从UED界两大种族前端设计师和视觉设计师的爱恨说起。&lt;/p&gt;
+
+&lt;p&gt;下面是设计师的视觉稿：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://upload-images.jianshu.io/upload_images/1665040-6ae27b1a9a35ce09.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&#34; alt=&#34;设计师的视觉稿&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;下面是前端开发出来的真实效果：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://upload-images.jianshu.io/upload_images/1665040-956bb7caf993d063.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&#34; alt=&#34;前端开发出来的真实效果&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;于是战争爆发了：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://upload-images.jianshu.io/upload_images/1665040-fd5af7c83a40fd9d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&#34; alt=&#34;于是战争爆发了&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;像这种视觉效果不一致问题，在日常开发中比比皆是。最近遇到的比较多的是字体问题，开了写轮眼的设计师经常抱怨手机上的字体跟设计稿不一致，前端只能无奈的回一句手机上没这字体啊&amp;hellip;然而实际情况远比这个复杂，正义的王二小见此情况决定挺身而出，踏上了Web字体修真之路，来寻找传说中的最优解。&lt;/p&gt;
+
+&lt;h2 id=&#34;从0开始&#34;&gt;从0开始&lt;/h2&gt;
+
+&lt;p&gt;这将是一次冒险，我们从0开始探索网页中的文字是如何一步步呈现在我们眼前的。计算机的数据，本质上都是由01组成的序列，不同的序列可以传达不同的信息，而同样的序列通过不同的编码和解码方式也会传达不同的信息。&lt;/p&gt;
+
+&lt;p&gt;我们所看到的网页，都是从服务端网络传输而来的一个个数据包通过浏览器解析而成，网络传输其实是一个很复杂的编码解码过程，你可能听过数据段，报文，分组，数据包，数据帧等关键词，这些术语其实只是OSI模型中各个层对数据单位的不同划分，最底层的表示还是以bit为单位的01。假设浏览器现在要渲染一段文本，它从服务端收到的数据包有一段信息是这样的（当然为了简化，除去报文头等信息，假设下面这段信息就页面上要展示的文本信息）：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;11100101 10001010 10101000 
+11100110 10000100 10011111 
+11100101 10110000 10001111 
+11100101 10001001 10001101
+11100111 10101011 10101111
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这是一串字节流，浏览器得到它的第一件事自然是解码，那么第一个问题，编码方式很多种，浏览器怎么知道用哪种方式去解码呢？&lt;/p&gt;
+
+&lt;h2 id=&#34;编码与解码&#34;&gt;编码与解码&lt;/h2&gt;
+
+&lt;p&gt;我们所熟知的编码方式有ASCII，GB2321，UTF-8，UTF-16等等，对于浏览器来说，它会按照以下规则去寻找数据的编码类型：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Web 服务器返回的 HTTP 头中的 Content-Type: text/html; charset=&amp;ldquo;xxx&amp;rdquo;。其中charset=&amp;ldquo;xxx&amp;rdquo;就是编码方式,当浏览器拿到这个信息之后，就能愉快的解码了；&lt;/li&gt;
+&lt;li&gt;如果服务端没有指定编码方式，浏览器会去网页文件的head中查找&lt;meta charset=&#34;xxx&#34;&gt;信息，来确定编码方式；&lt;/li&gt;
+&lt;li&gt;如果还没找到，那浏览器就只能自行判断编码了，或者让用户设置解码方式。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;可以看到，前两步信息都是确定的，只有第三步是无法确定编码方式的。所以为了让你的页面能正常展示出来，一定得要在前两步就设定好charset编码方式，以便于浏览器以你期望的方式解码。&lt;/p&gt;
+
+&lt;p&gt;现代网页通常都使用utf-8的编码方式，所以我们就以此为例。utf-8是unicode字符集的一种实现方式，unicode本质上就是一个表，一个将二进制数据映射到各种文字符号的表，这个表野心很大，想要囊括世界上所有文字符号，并且他也实现了自己的目标，所以它也成了网络世界应用最广泛的一个表。&lt;/p&gt;
+
+&lt;p&gt;假设上面那串字节流采用了utf-8编码,那么根据utf-8字节流到unicode的编码规则：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://upload-images.jianshu.io/upload_images/1665040-49cf3dbde21a08ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&#34; alt=&#34;Unicode~UTF-8映射表&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;可以看到上面那段字节流全都是1110xxxx 10xxxxxx 10xxxxxx的形式，那么根据表中第三行映射关系，应该是3个utf-8字节对应1个unicode编码，将三个字节中的16个x用两个字节表示，然后转化成十六进制的unicode表示，最终可得到以下结果：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;11100101 10001010 10101000 -&amp;gt; 01010010 10101000 -&amp;gt; \u52a8
+11100110 10000100 10011111 -&amp;gt; 01100001 00011111 -&amp;gt; \u611f
+11100101 10110000 10001111 -&amp;gt; 01011100 00001111 -&amp;gt; \u5c0f
+11100101 10001001 10001101 -&amp;gt; 01010010 01001101 -&amp;gt; \u524d
+11100111 10101011 10101111 -&amp;gt; 01111010 11101111 -&amp;gt; \u7aef
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;得到unicode编码之后，我们就可以根据unicode字符表找到对应的文字符号，最终得到了以下结果：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;\u52a8\u611f\u5c0f\u524d\u7aef -&amp;gt; 动感小前端
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果对最终的结果不确定，可以反向验证一下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;escape(&#39;动感小前端&#39;) // &amp;quot;%u52A8%u611F%u5C0F%u524D%u7AEF&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;得出的unicode字符数值完全一致，看来计算没错，那么紧接着第二个问题来了，浏览器该如何去展示它？就好比我知道你的名字叫什么，但并不知道怎么写一样。&lt;/p&gt;
+
+&lt;h2 id=&#34;寻找字体&#34;&gt;寻找字体&lt;/h2&gt;
+
+&lt;p&gt;字体的渲染是一个很复杂的过程，首先我们需要知道在Web世界中存在着五大字体家族，江湖人称font-family：serif、sans-serif、monospace、cursive和fantasy。在这五大家族下面，又演变出各个不同的字体，比如宋体，微软雅黑，Arial，Helvetica等等。同样的文字，在不同的字体下面会呈现出不同的效果：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://upload-images.jianshu.io/upload_images/1665040-807e55c98bf3e11c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&#34; alt=&#34;相同大小粗细但不同字体的差别&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;但是，不管是什么字体，他们本质上都是一个表。你可以把这个表理解成三个部分：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;轮廓：用来记载字符的形状；&lt;/li&gt;
+&lt;li&gt;编码：用来记载字符内部编号与字符形状以及unicode编码之间的映射关系；&lt;/li&gt;
+&lt;li&gt;封装：将上面这些东西封装成特定的文件格式&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;想要深入了解字体内部原理，请走支线剧情&lt;a href=&#34;https://book.douban.com/subject/2362953/&#34;&gt;《Fonts &amp;amp; Encodings》&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;浏览器在渲染字体时，首先会把这些文字分为不同语言的小段，然后依次确定该用哪一种字体，确定之后按照字符的unicode编码在字体中匹配相应的轮廓，并最终渲染在屏幕上。通常我们都会给页面指定一套字体规则：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;font-family: Helvetica, STXihei, &amp;quot;Microsoft YaHei&amp;quot;, Arial, SimSun,sans-serif; 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;浏览器会按照字体声明的顺序依次去寻找系统中已安装的字体，如果找到了就按照该字体渲染，没找到则依次往后查找，如果最后还是没找到，则使用浏览器设置的&lt;strong&gt;神秘的默认字体&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;h2 id=&#34;渲染排版&#34;&gt;渲染排版&lt;/h2&gt;
+
+&lt;p&gt;确定了字体之后，浏览器就真的要去渲染了。如果你以为把字体设置的一样就能万事大吉了，那就太天真了。即使是相同的字体，不同的环境下渲染出来的结果也是不一样的！就好比同样是须佐能乎，不同人产生的形态也是不一样的,先看两张图：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://upload-images.jianshu.io/upload_images/1665040-44c01567d212cce1.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&#34; alt=&#34;相同字体在不同环境下的效果&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://upload-images.jianshu.io/upload_images/1665040-90539a9776d8145d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&#34; alt=&#34;放大后的对比效果&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这是同一个页面在不同环境下的显示效果，其实如果在真实环境下看的话基本看不出来差别，但是对比一看差别还是很明显的。MBP下是retina屏，显示效果更细腻一些，而MBA下则更厚重些。放大来看，MBP下字体边缘有灰色的边缘（灰度渲染），而MBA下则是彩色的边缘（次像素渲染）。&lt;/p&gt;
+
+&lt;p&gt;可以看到，同样是Mac系统+Chrome浏览器，只是版本号稍微不同，渲染效果就会有所差别。更别说在Windows和Android上了。那么造成这种差异的原因是什么呢？&lt;/p&gt;
+
+&lt;h4 id=&#34;排版引擎&#34;&gt;排版引擎&lt;/h4&gt;
+
+&lt;p&gt;不同浏览器有着不同的渲染引擎，不同的操作系统上面也有不同的文字排版引擎，而浏览器在渲染页面文本的时候都会调用系统的文字排版引擎。不同的排版策略就会造成不同的渲染结果。&lt;/p&gt;
+
+&lt;p&gt;Mac使用的排版引擎为CoreText，Windows7为DirectWrite/GDI,Windows XP则使用GDI。我们不会深入探索各个排版引擎的原理（想要深入了解Web字体渲染知识，可以去&lt;a href=&#34;http://blog.typekit.com/2010/10/05/type-rendering-on-the-web/&#34;&gt;Typekit&lt;/a&gt;上了解更多），只需要知道不同的渲染引擎可能会造成字体有细节上的差异。即使是同一种渲染引擎，采用不同的渲染策略，比如灰度渲染和亚像素渲染，得出的效果也是不一样的。&lt;/p&gt;
+
+&lt;p&gt;Core Text 渲染引擎：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://upload-images.jianshu.io/upload_images/1665040-1da702bbfc543f5a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&#34; alt=&#34;Core Text 渲染引擎&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;DirectWrite渲染引擎：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://upload-images.jianshu.io/upload_images/1665040-f571d8243cb139c4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&#34; alt=&#34;DirectWrite渲染引擎&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;GDI渲染引擎，开启标准抗锯齿：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://upload-images.jianshu.io/upload_images/1665040-584d0b7d4257c95e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&#34; alt=&#34;GDI渲染引擎，开启标准抗锯齿&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;GDI渲染引擎，无抗锯齿：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://upload-images.jianshu.io/upload_images/1665040-7dc48972419e984d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&#34; alt=&#34;GDI渲染引擎，无抗锯齿&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;由此可看出排版引擎渲染策略的差异是造成字体显示效果不一致的根本原因之一，但是这种差异非常之小，对于普通用户来说，根本不会注意到这些细节，所以前端工程师大可不必为此操心。&lt;/p&gt;
+
+&lt;p&gt;至此，我们终于走完文字从0渲染到屏幕上的整个过程。&lt;/p&gt;
+
+&lt;h2 id=&#34;诸子百家&#34;&gt;诸子百家&lt;/h2&gt;
+
+&lt;p&gt;之前有提到，当浏览器没有找到所声明的字体时，会使用默认字体。问题就在于，这个默认字体到底是什么字体呢？不同设备之间的默认字体又分别是什么？影响默认字体的因素又有哪些呢？&lt;/p&gt;
+
+&lt;p&gt;在旧PC时代，统治人类的主要是windows和mac两大阵营，我们扳着手指头都能列出各大平台和浏览器上的默认字体。但是到了如今的无线乱世，安卓的开源让每个设备厂商都可能会有自己独特的默认字体，这对网页的视觉统一性又带来了巨大的挑战。&lt;/p&gt;
+
+&lt;h4 id=&#34;裸奔字体&#34;&gt;裸奔字体&lt;/h4&gt;
+
+&lt;p&gt;裸奔字体就是你的页面不设置任何样式，浏览器呈现出的默认字体，我写了个小&lt;a href=&#34;aliquanfeng.com/demo/font.html&#34;&gt;demo&lt;/a&gt;，你可以点击试试看你浏览器上面的裸奔字体是啥，也可以扫码看看手机上的情况：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://upload-images.jianshu.io/upload_images/1665040-9839a6fa2a39e9e4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&#34; alt=&#34;浏览器默认字体测试&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;在&lt;a href=&#34;https://app.crossbrowsertesting.com/screenshots/1675917?size=small&amp;amp;type=windowed&#34;&gt;CrossBrowserTesting&lt;/a&gt;上跑了一下效果如下：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://upload-images.jianshu.io/upload_images/1665040-f1170d657feb58a1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&#34; alt=&#34;Win8/OSX 部分浏览器对比&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;而在本人真机下的效果：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://upload-images.jianshu.io/upload_images/1665040-7c24d04a0d44b9e1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&#34; alt=&#34;自上而下分别为Firefox,Safari,Chrome&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;很明显能看出，裸奔字体千变万化，根本不靠谱！&lt;/p&gt;
+
+&lt;h4 id=&#34;安全字体&#34;&gt;安全字体&lt;/h4&gt;
+
+&lt;p&gt;好在，现在已经没有人裸奔了，一般都会在页面中手动声明一下字体，比如百度首页是这样的：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;body{font: 12px arial;} // 写的这么精简是为了省流量么...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;谷歌首页是这样：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;body{font-family: arial,sans-serif;} // 好歹加了字体族
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;天猫首页是这样的：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;body{font: 12px/1.5 tahoma,arial,&amp;quot;\5b8b\4f53&amp;quot;;}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;淘宝首页是这样的：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;body{font: 12px/1.5 tahoma,arial,&#39;Hiragino Sans GB&#39;,&#39;\5b8b\4f53&#39;,sans-serif;}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;上面四种写法可能都有自己的考虑，但仅从终端字体表现的角度来看，很明显淘宝的写法更专业。Arial可谓是支持性最广的字体了，所以大家都用上了，这种被大多数系统所默认支持的字体，就是Web安全字体。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.cssfontstack.com/&#34;&gt;CSS Font Stack&lt;/a&gt;上有对Web安全字体的整理，建议设计师们在作图的时候多考虑一下，这样能一定程度上降低视觉差异。并且某些字体其实长得还是蛮像的，你还可以使用安全字体来代替长相相似的非安全字体。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://upload-images.jianshu.io/upload_images/1665040-45dffe609bc17e97.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&#34; alt=&#34;Arial支持性最广，而Helvetica在Mac上100%支持&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;到目前为止，我们所做的一切考虑就是让页面字体效果在不同终端下尽可能保持一致，初步结论就是要使用安全字体，然而设计师并不这样想。设计师一般会使用逼格比较高的非安全字体，比如兰亭细黑,苹方字体。一旦浏览器发现系统没有这些字体，就会不断降级，最坏的情况，就是一直降级到默认字体。所以通常我们会在font-family最后加上一个默认的字体族，比如sans-serif，这样浏览器在最坏的情况下也能使用特定的字体族，并在该字体族下选择一名指定字体来展示。&lt;/p&gt;
+
+&lt;p&gt;那么在这些指定的种族背后，被选中的孩子们到底都有谁呢？&lt;/p&gt;
+
+&lt;h4 id=&#34;神秘的默认字体&#34;&gt;神秘的默认字体&lt;/h4&gt;
+
+&lt;p&gt;首先系统会默认安装一些字体，维基上有对Win/Mac内置字体的整理：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/List_of_typefaces_included_with_Microsoft_Windows&#34;&gt;Windows 字体列表&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/List_of_typefaces_included_with_OS_X&#34;&gt;Mac OS X 字体列表&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;然后当你安装软件时，有可能会附带安装一些字体，这样你系统上能支持的字体又变多了。在上面那份列表中，Win/Mac共同支持的字体只有Arial, Verdana, Tahoma, Trebuchet MS, Georgia等少数Web安全字体，对于Win/Mac平台实际字体效果分析，请参考此文：&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;跨平台字体效果浅析:&lt;a href=&#34;https://isux.tencent.com/5058.html&#34;&gt;https://isux.tencent.com/5058.html&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;重点说下无线端, &lt;a href=&#34;http://iosfonts.com/&#34;&gt;iOS Fonts&lt;/a&gt; 和&lt;a href=&#34;http://iosfontlist.com/&#34;&gt;iOS Font List&lt;/a&gt;网站整理了一份各个版本的iOS字体清单，可以很方便的查出各版本支持情况：&lt;/p&gt;
+
+&lt;p&gt;Helvetica字体完美支持：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://upload-images.jianshu.io/upload_images/1665040-41168fefdf385c50.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&#34; alt=&#34;Helvetica字体完美支持&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;苹方字体从 iOS 9 才开始支持：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://upload-images.jianshu.io/upload_images/1665040-c0acab37107bf77f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&#34; alt=&#34;苹方字体从 iOS 9 才开始支持&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;虽然方便，但毕竟第三方网站，不排除数据有误的情况，于是附上官网声明的字体清单：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://support.apple.com/zh-cn/HT4980&#34;&gt;iOS 5：字体列表&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://support.apple.com/zh-cn/HT202599&#34;&gt;iOS 6：字体列表&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://support.apple.com/zh-cn/HT202771&#34;&gt;iOS 7：字体列表&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#&#34;&gt;&lt;del&gt;iOS 8：字体列表&lt;/del&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#&#34;&gt;&lt;del&gt;iOS 9：字体列表&lt;/del&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;对于安卓，&lt;strong&gt;原生的安卓&lt;/strong&gt;使用的是Droid Sans(英文/数字)和Droidsansfallback(中文),4.0后修改为Google的开源字体Roboto。而非原生安卓，实在没有总结性可言。比如小米和华为用了方正兰亭黑，锤子则使用了华文黑体，并且同一厂商下的不同手机品牌，同一品牌的不同型号默认字体都可能不同，不做展开。&lt;/p&gt;
+
+&lt;p&gt;一张图总结一下：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://upload-images.jianshu.io/upload_images/1665040-3d5de633b781d7e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&#34; alt=&#34;各平台默认字体对比&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;哦，忘了还有Windows Phone，WP默认英文字体是Segoe，中文字体在WP8以前是雅黑，WP8之后是方正等线体。&lt;/p&gt;
+
+&lt;p&gt;哦，忘了还有YunOS，貌似是方正兰亭细黑&amp;hellip;&lt;/p&gt;
+
+&lt;h4 id=&#34;强大的自定义字体&#34;&gt;强大的自定义字体&lt;/h4&gt;
+
+&lt;p&gt;是的，用户可以选择自己喜欢的字体。你永远不知道用户会干什么，什么安全字体，默认字体，一个主题包下来全都是浮云：&lt;/p&gt;
+
+&lt;p&gt;用户修改系统字体：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://upload-images.jianshu.io/upload_images/1665040-d645d4ef24dcdfbf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&#34; alt=&#34;用户修改系统字体&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;当然这不是最绝的，换个字体最多样子变了，最绝的是用户开启老人机模式，放大字体！&lt;/p&gt;
+
+&lt;p&gt;普通-放大模式对比：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://upload-images.jianshu.io/upload_images/1665040-f0e57cbd6932550f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&#34; alt=&#34;普通-放大模式对比&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这两招一出，基本会给设计师和前端造成10000+伤害，不过我们仍然可以做点什么：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;严格控制页面布局，字体超出部分截断，保证页面正常显示；&lt;/li&gt;
+&lt;li&gt;监测页面缩放情况并给予用户提示；&lt;/li&gt;
+&lt;li&gt;页面自适应或者，针对老人模式单独开发一套页面。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;小结&#34;&gt;小结&lt;/h2&gt;
+
+&lt;p&gt;看到这里王二小已经残血，稍微修整总结一下，字体表现不一致的根本原因有：
+- 排版引擎渲染策略差异(影响小，不可规避)
+- 各终端默认字体设置差异(影响中，可规避)
+- 用户手动设置自定义字体（影响大，不可控）&lt;/p&gt;
+
+&lt;p&gt;目前为止我们能做的就是尽量使用Web 安全字体，针对不同终端对font-family字体选择顺序进行优雅降级，并设置默认字体族来规避风险。&lt;/p&gt;
+
+&lt;p&gt;但只做到这些还远远不够，我们完全处于被动状态，一切都依赖于终端环境的字体情况，并且还没考虑到字体格式，中英混排，字体动画，字体优化，Web标准技术等方面。接下来我们要主动出击，站在巨人的肩膀上去各个击破，打怪升级，去寻找Web字体应用最佳实践之道。&lt;/p&gt;
+
+&lt;p&gt;冒险越来越深入了，等待王二小的将会是什么呢？请看下集：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://upload-images.jianshu.io/upload_images/1665040-f0c2c4a760fed16e.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&#34; alt=&#34;美丽新世界&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;参考资料&#34;&gt;参考资料&lt;/h2&gt;
+
+&lt;p&gt;以下是相关参考资料，若想深入了解，建议仔细研读。&lt;/p&gt;
+
+&lt;h5 id=&#34;web-字体的选择和运用&#34;&gt;Web 字体的选择和运用&lt;/h5&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://blog.coding.net/blog/Web-Fonts&#34;&gt;https://blog.coding.net/blog/Web-Fonts&lt;/a&gt;&lt;/p&gt;
+
+&lt;h5 id=&#34;网页字体优化&#34;&gt;网页字体优化&lt;/h5&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/webfont-optimization?hl=zh-cn&#34;&gt;https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/webfont-optimization?hl=zh-cn&lt;/a&gt;&lt;/p&gt;
+
+&lt;h5 id=&#34;字体的各个概念术语&#34;&gt;字体的各个概念术语&lt;/h5&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.zhihu.com/question/20366900 &#34;&gt;http://www.zhihu.com/question/20366900 &lt;/a&gt;&lt;/p&gt;
+
+&lt;h5 id=&#34;字体渲染相关&#34;&gt;字体渲染相关&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://ued.ctrip.com/blog/font-rendering.html&#34;&gt;http://ued.ctrip.com/blog/font-rendering.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.jobbole.com/21671/&#34;&gt;http://blog.jobbole.com/21671/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://isux.tencent.com/website-font-rendering-process.html&#34;&gt;http://isux.tencent.com/website-font-rendering-process.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://developer.apple.com/fonts/TrueType-Reference-Manual/RM02/Chap2.html&#34;&gt;https://developer.apple.com/fonts/TrueType-Reference-Manual/RM02/Chap2.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;typekit-web字体渲染系列文章&#34;&gt;Typekit Web字体渲染系列文章&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.typekit.com/2010/10/05/type-rendering-on-the-web/&#34;&gt;http://blog.typekit.com/2010/10/05/type-rendering-on-the-web/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.typekit.com/2010/10/15/type-rendering-operating-systems/&#34;&gt;http://blog.typekit.com/2010/10/15/type-rendering-operating-systems/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.typekit.com/2010/10/21/type-rendering-web-browsers/&#34;&gt;http://blog.typekit.com/2010/10/21/type-rendering-web-browsers/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.typekit.com/2010/11/09/type-rendering-the-design-of-fonts-for-the-web/&#34;&gt;http://blog.typekit.com/2010/11/09/type-rendering-the-design-of-fonts-for-the-web/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.typekit.com/2010/12/08/type-rendering-font-outlines-and-file-formats/&#34;&gt;http://blog.typekit.com/2010/12/08/type-rendering-font-outlines-and-file-formats/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.typekit.com/2010/12/14/a-closer-look-at-truetype-hinting/&#34;&gt;http://blog.typekit.com/2010/12/14/a-closer-look-at-truetype-hinting/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.typekit.com/2010/12/17/type-rendering-review-and-fonts-that-render-well/&#34;&gt;http://blog.typekit.com/2010/12/17/type-rendering-review-and-fonts-that-render-well/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;网页设计中默认字体详解&#34;&gt;网页设计中默认字体详解&lt;/h5&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://waxdoll.gitbooks.io/webdesignfoundations/content/appendix/font_browser_default.html&#34;&gt;https://waxdoll.gitbooks.io/webdesignfoundations/content/appendix/font_browser_default.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;h5 id=&#34;mac-os-x-字体列表&#34;&gt;Mac OS X 字体列表&lt;/h5&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/List_of_typefaces_included_with_OS_X&#34;&gt;https://en.wikipedia.org/wiki/List_of_typefaces_included_with_OS_X&lt;/a&gt;&lt;/p&gt;
+
+&lt;h5 id=&#34;windows-字体列表&#34;&gt;Windows 字体列表&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/List_of_typefaces_included_with_Microsoft_Windows&#34;&gt;https://en.wikipedia.org/wiki/List_of_typefaces_included_with_Microsoft_Windows&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.microsoft.com/typography/fonts/product.aspx&#34;&gt;http://www.microsoft.com/typography/fonts/product.aspx&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;开源字体列表&#34;&gt;开源字体列表&lt;/h5&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Open-source_Unicode_typefaces&#34;&gt;https://en.wikipedia.org/wiki/Open-source_Unicode_typefaces&lt;/a&gt;&lt;/p&gt;
+
+&lt;h5 id=&#34;css-font-stack&#34;&gt;CSS Font Stack&lt;/h5&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.cssfontstack.com/&#34;&gt;http://www.cssfontstack.com/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h5 id=&#34;数字设计之美&#34;&gt;数字设计之美&lt;/h5&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.typeisbeautiful.com/2009/09/1467/&#34;&gt;http://www.typeisbeautiful.com/2009/09/1467/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h5 id=&#34;跨平台字体效果浅析&#34;&gt;跨平台字体效果浅析&lt;/h5&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://isux.tencent.com/5058.html&#34;&gt;https://isux.tencent.com/5058.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;h5 id=&#34;对比-ios-系统-android-的字体渲染有何区别&#34;&gt;对比 iOS 系统 Android 的字体渲染有何区别&lt;/h5&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.zhihu.com/question/21211748&#34;&gt;https://www.zhihu.com/question/21211748&lt;/a&gt;&lt;/p&gt;
+
+&lt;h5 id=&#34;ios-font-字体整理&#34;&gt;iOS Font 字体整理&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://iosfonts.com/&#34;&gt;http://iosfonts.com/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://iosfontlist.com/&#34;&gt;http://iosfontlist.com/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&#34;mars-font-family&#34;&gt;Mars/font-family&lt;/h5&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/AlloyTeam/Mars/blob/master/solutions/font-family.md&#34;&gt;https://github.com/AlloyTeam/Mars/blob/master/solutions/font-family.md&lt;/a&gt;&lt;/p&gt;
+
+&lt;h5 id=&#34;网页字体设置你了解吗&#34;&gt;网页字体设置你了解吗？&lt;/h5&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://ued.ctrip.com/blog/web-page-font-settings-did-you-know.html&#34;&gt;http://ued.ctrip.com/blog/web-page-font-settings-did-you-know.html&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>阿里一周年杂记</title>
+      <link>http://quanfeng.tech/blog/post/ali-one-year/</link>
+      <pubDate>Thu, 14 Jul 2016 21:42:50 +0800</pubDate>
+      
+      <guid>http://quanfeng.tech/blog/post/ali-one-year/</guid>
+      <description>
+
+&lt;p&gt;&lt;img src=&#34;https://img.alicdn.com/tps/TB1SBWoKVXXXXXMaFXXXXXXXXXX-1057-697.png&#34; alt=&#34;阿里一年香&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+
+&lt;p&gt;工作一年了，从学生党变工作党，从野生程序员变职业前端，收货了不少东西，于此一年香之际，记录一下自己的心路历程以及真实想法。&lt;/p&gt;
+
+&lt;p&gt;另外，本文纯感想且不涉及任何技术，所有内容仅代表个人观点，与任何组织及公司无关，若有不当或错误之处请及时指出，以免误伤路人。&lt;/p&gt;
+
+&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
+
+&lt;p&gt;在这一年里，我有幸和大家一起经历了双11，双12，年货节，517通信节等大大小小的活动，为天猫网厅和阿里通信贡献自己的力量，阿里在技术上有着丰厚的沉淀，让我的技术视野开阔了许多，在各路前辈的带领下自己的能力也得到不小提升，在和大家一起共事的过程中也让我学习到了团队合作和交流的很多技能，期间有欢笑也有迷茫，有困难也存在许多问题，但这些对我来说都是一种锻炼和成长，很荣幸能加入到阿里大家庭，感谢你们。&lt;/p&gt;
+
+&lt;p&gt;好了，正式总结写完了，下面开始非正式的。&lt;/p&gt;
+
+&lt;h2 id=&#34;公司和团队&#34;&gt;公司和团队&lt;/h2&gt;
+
+&lt;p&gt;先说下公司吧，本人校招生，也没来实习过，所以来之前怀着满满的敬畏之情，哇，大公司耶，还有好多牛人，做了那么多牛逼的产品和技术，还担心自己能不能适应职场生活和礼仪，能不能胜任工作处理好同事关系。来之后发现自己完全想多了，这就一所“大学”，同事关系都是简单直接，大家都是对事不对人，工作氛围很好，环境也不错，有食堂，有小吃，有餐厅，有咖啡馆，还有自己的园区，除了预料之中的加班之外，一切都好。&lt;/p&gt;
+
+&lt;p&gt;然后是团队，作为前端，our team还是很和谐很会玩的，成员过生日或者工作满周年都会出去小聚一下，业务不忙时还能饭后踢个球，哪天老大高兴还会请客看个电影洗个脚啥的，虽然最浪的还是UED，但是比起后台等其他技术部门还是要好上不少。其实我想说能碰上一个开放和会玩的老大还是很幸运的。&lt;/p&gt;
+
+&lt;h2 id=&#34;生活与工作&#34;&gt;生活与工作&lt;/h2&gt;
+
+&lt;p&gt;本来想把工作和生活分开，毕竟阿里一直倡导员工要“认真生活，快乐工作”，然而发现每天大部分时间都在工作，工作已然是生活的重要部分。自己的状态在这一年中也经历了不少变化，所以就干脆一起写了。&lt;/p&gt;
+
+&lt;h4 id=&#34;lv1-努力工作-认真生活&#34;&gt;LV1:努力工作，认真生活&lt;/h4&gt;
+
+&lt;p&gt;刚来时其实有点虚，以前都是在小作坊小公司玩，突然变得专业起来还是很有压力，只能更加努力的去工作，去学习，去做出更多的东西来证明自己。生活上则是很认真的对待每件事，毕竟身上只有2千块钱，在没发工资的情况下要租房还要买东买西还是很心塞的。&lt;/p&gt;
+
+&lt;h4 id=&#34;lv2-认真工作-随便生活&#34;&gt;LV2:认真工作，随便生活&lt;/h4&gt;
+
+&lt;p&gt;度过实习期后，心里踏实了很多，然后开始认真对待工作中的每件事，毕竟刚来，不能捅娄子。同时回家之后也经常要学习看书，不断提升自己能力。所以生活上就很随便啦，一日三餐都是在公司蹭的，早出晚归回家就没剩多久时间了，周末就在家写点东西，也没怎么锻炼，没怎么出去玩。&lt;/p&gt;
+
+&lt;h4 id=&#34;lv3-努力工作-认真加班&#34;&gt;LV3:努力工作，认真加班&lt;/h4&gt;
+
+&lt;p&gt;淘宝天猫基本是天天在搞活动，一旦遇到双11，年货节，517通信节这种大型活动，光努力工作已经不够了，还得加班，况且对我来说都是第一次，如何优雅的处理产品经理运营UED的需求，以及开发节奏和线上问题还是有挑战的。印象比较深刻的是双11加班到了凌晨4点，517连续加班了2周，并且经常是到晚上两三点, 累的不要不要的。从这之后我才开始重新对待工作和生活的关系。&lt;/p&gt;
+
+&lt;p&gt;其实每天重复的工作和加班，曾让我开始迷茫，感到自己就是一个机器人。首先这些快速迭代的业务代码对我的能力基本没有提升，然后经常性加班耗费了我本就不多的业余时间，长此下去必然是个恶性循环，于是便决定休假调节一下状态。然后就去三亚玩了几天，在那里体验到了很多不一样的东西，感觉自己的人生又到了一个新的台阶，还有很多美好的东西等待着我去追寻。&lt;/p&gt;
+
+&lt;h4 id=&#34;lv4-用心工作-快乐生活&#34;&gt;LV4:用心工作，快乐生活&lt;/h4&gt;
+
+&lt;p&gt;这应该是我目前所能达到的最高境界了。“认真生活、快乐工作”这话肯定是马老师说的：“我特讨厌认真工作的人，工作不要太认真，工作快乐就行，因为只有快乐让你创新，认真只会更多的KPI、更多的压力、更多的埋怨、更多的抱怨，真正把自己变成机器。我们不管多伟大、多了不起、多勤奋、多痛苦，永远记住做一个实实在在、舒舒服服、快快乐乐的人”。&lt;/p&gt;
+
+&lt;p&gt;我觉得后半句说的非常对。&lt;/p&gt;
+
+&lt;p&gt;虽然我很喜欢前端，但对于工作，并未达到“快乐工作”这样的境界。我更认可用心做好每件事。在沟通交流，讨论产品，推动业务每一件小事上都需要花心思，而不是只专注技术。工作一定得用心，最坏的情况就是怀疑一切，把所有人都当“傻逼”，当然，我也是傻逼。运营可能会把页面地址当成图片地址发布上线，导致网站开天窗；产品有时自己都没想好就把需求提过来了：“先这样改，后期我们再逐渐优化”，这是我见过的最不负责任的说法；UED可能在你做到一半时突然把整个页面的风格都换了，而一个小需求则有可能牵扯到好几个业务部门，导致沟通成本高而效率低下，产品的设计也是运营驱动，经常会有资源替换的方式来让产品加上一些很不人性化的东西&amp;hellip;&amp;hellip;还有许多类似问题，然而让人意外的是，It works!&lt;/p&gt;
+
+&lt;p&gt;这些问题都很常见，但我真正想表达的不是如何去埋怨这些问题，而是如何去解决它们。&lt;/p&gt;
+
+&lt;p&gt;运营出问题说明我们的系统人性化和易用性还不够好，需求不稳定可能是我们流程把控有问题，而常改视觉稿说明我们还没有形成一个成熟的规范，沟通成本低说明我们的沟通方式有待改进&amp;hellip;总之，任何团队和企业都会有自己的问题，只有尝试去解决这些问题，才会少更多埋怨，并且个人也会有更多的成就感。好在，阿里人有点让我特别欣慰的就是善于总结和吸取教训，并且会从以往经验中不断完善自己。虽然存在少数老员工有种躺在阿里挣钱的感觉，但总体上讲这还是一支很有活力和激情的队伍，尤其是运营！真心服！&lt;/p&gt;
+
+&lt;p&gt;再说说生活，这一年整体上还是比较放纵，想买啥就买了，无聊的时候就靠买东西打发时间了，各种书，电子产品，吃的穿的。后来想画画了，于是加入了淘宝叼炸天的核物理研究中心手绘技术实验组(虽然好久没去了555)，然后又喜欢上了摄影，本着坚决不用单反不买iPhone的人生原则继续玩安卓渣渣机。生活中培养一些小爱好还是蛮好的，偶尔出去骑车或者参加活动或者旅游啥的调节下节奏也很必要。至于理想啊目标啊啥的鸡汤类的东西就不写了，毕竟生活这种东西，每个人的口味都不一样。&lt;/p&gt;
+
+&lt;h2 id=&#34;设计与美学&#34;&gt;设计与美学&lt;/h2&gt;
+
+&lt;p&gt;这是一个很高深的话题，我要开始装逼了Orz&amp;hellip;.&lt;/p&gt;
+
+&lt;p&gt;一位大神曾经说过，&amp;rdquo;不会搞艺术的程序员不是好设计师&amp;rdquo;。&lt;/p&gt;
+
+&lt;p&gt;我其实很向往这种感觉，每当看到一些美妙的设计，都有一种去当设计师的冲动。&lt;/p&gt;
+
+&lt;p&gt;然而我现在是一名程序员。&lt;/p&gt;
+
+&lt;p&gt;其实&amp;hellip;我原本是，想做漫画家来着。本来我天赋异禀，骨骼惊奇，从小都是左撇子来着，后来一上小学就被老师掰成右手了；本来想考艺校的，然而烧不起于是就去了某科大搬砖；本来是想转专业的，后来发现写代码也挺好玩的于是就掉坑里了。自己大学时也做过一段时间设计，但是并未坚持下来，现在看两年前做的海报和APP简直就跟屎一样，都不好意思说自己曾经是宣传部的，惨的一逼。&lt;/p&gt;
+
+&lt;p&gt;不过据说金牛都是天生的艺术家，看来我还是有机会翻身的。&lt;/p&gt;
+
+&lt;p&gt;我的下一个目标就是不仅要成为一名优秀的前端，还要成为一名优秀的设计。男神说过，设计师的第一步，应该从多看优秀的作品开始，所以，接下来的一年里打算多培养一下自己的审美意识和鉴美能力。一旦我的计划得逞说不定还能偶尔打一下UED的脸，想想都觉得激动！&lt;/p&gt;
+
+&lt;h2 id=&#34;前端与编程&#34;&gt;前端与编程&lt;/h2&gt;
+
+&lt;p&gt;要说收货最大的还数前端，我要开始扯淡了Orz&amp;hellip;.&lt;/p&gt;
+
+&lt;h4 id=&#34;肤浅的认知&#34;&gt;肤浅的认知&lt;/h4&gt;
+
+&lt;p&gt;以前对前端的认知就是网页三剑客，现在来看着实肤浅。&lt;/p&gt;
+
+&lt;p&gt;当年在学校写的东西，要么是SPA官网，要么是微信推广页面，要么是给自个儿用的后台管理系统，而且没有完整的测试，没有线上监控，没有性能优化，完全停留在功能层面。来阿里了才算见识到一个专业前端所要具备的技能。除去所有程序员都具备的编程能力和工程能力，以及协作开发，代码维护能力，前端在项目技术选型，开发构建，调试和测试，发布和版本控制，监控及告警，性能优化与安全，视觉交互与体验等每一个步骤都可以做很多事情，这还不包括发展异常迅猛的前端新技术（各种框架，工具，新的Web API，新的规范和标准），简直眼花缭乱。以前的前端只需要library,而现在则需要framework和workflow。究其根本，是前端承载的业务越来越复杂，需要更强大的架构去支持，如果要你用一句话来描述现在的前端，你会怎么说呢？&lt;/p&gt;
+
+&lt;h4 id=&#34;业务和技术&#34;&gt;业务和技术&lt;/h4&gt;
+
+&lt;p&gt;第一年重点还是业务，主要贡献还是支撑了天猫网厅这边的几次大促活动和活动组件化建设。业务技术上也是走天猫和淘宝各自的工作流，总体概扩起来就是业务取得了不错结果，但技术缺乏强力输出。&lt;/p&gt;
+
+&lt;p&gt;然后说下工作外的，这一年前端依然涌现出了很多新技术，自己也都是浅尝辄止。&lt;/p&gt;
+
+&lt;p&gt;对于框架，React学了一阵实在不习惯那怪异的DSL，并且只写简单demo也没有让我感受到它在复杂应用上的优势，而对业务进行React重构是否真心能降低未来的维护成本我也不得而知；Vue刚学时感觉就是精简版的Angular，简单粗暴但直接有效，实际用上之后会发现非常优雅；而学习Polymer的时候一下子就被惊艳到了，感觉这就是WebComponent的未来。然后当Atom和VSC火了之后又去看了下Electron，然而又是只写了demo；WebVR也是热情了一阵，本想用A-Frame写个VR小游戏的，无奈手机上跑实在太卡，根本没法玩，只能坐等WebAssembly拯救世界了。然而当我一本正经准备去玩WASM的时候，发现将一个简单的helloworld.c程序从源文件编译成asm再到wasm后，居然达到了惊人的114k&amp;hellip;然后再看看WebAssembly的Github,我又陷入了懵逼之中，这玩意儿起码得再过个三四年&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;所以最终能深入下来的基本没有，更多的像是在玩。玩新技术能增强自己的视野，把握Web的发展潮流，但也会耗费自己的时间，而且真正有收获并且能形成个人竞争力的东西也很少，业务和技术其实需要相互平衡和促进，这点自己做的还不好，应当控制。&lt;/p&gt;
+
+&lt;h4 id=&#34;前端好难&#34;&gt;前端好难？&lt;/h4&gt;
+
+&lt;p&gt;已经不止一次听人说前端越来越难了，我入行晚，大家不要骗我。&lt;/p&gt;
+
+&lt;p&gt;前端这几年确实变化很快，也越来越复杂了，但是用”难”来形容总感觉怪怪的。可能是前端以前太简单了，所以跟以前的前端比越来越难了，但是跟服务端，跟客户端相比前端只能算是步入了工程化的正轨。说前端难的导火索无非是各种新技术的不断涌现，但是这些技术归根到底不外乎4种：&lt;/p&gt;
+
+&lt;p&gt;1.&lt;strong&gt;开发语言技术&lt;/strong&gt;。比如CSS，ES6&amp;amp;7，WebComponent等语言和开发层面的技术更新，需要我们不断去学习新的东西。但是语言级别的技术迭代是每种程序员都要面对的，像Java,C++,C#,Swift每年也都在不断更新,但从未听客户端工程师说越来越难了。&lt;/p&gt;
+
+&lt;p&gt;2.&lt;strong&gt;各种开发框架&lt;/strong&gt;。比如React,Vue.js,AngularJS，Polymer这种前端开发框架的不断涌现，其实都是为了解决日益复杂的业务以及不同的用户场景而生的。类比起来就好比当年后台的SSH架构，或者客户端的MFC和WPF。这些技术通常有良好的学习文档，而且工程性很强，若非深入研究，上手难度其实并不高。&lt;/p&gt;
+
+&lt;p&gt;3.&lt;strong&gt;Web能力的扩展&lt;/strong&gt;。包括浏览器不断开放的更多接口比如蓝牙，电池，本地存储，service worker，Houdini等新的API能力，以及像WASM这样的底层优化技术。然而这种类型的技术你要你认真去看标准文档学习其实也还好。&lt;/p&gt;
+
+&lt;p&gt;4.&lt;strong&gt;众多的开发工具&lt;/strong&gt;。比如Grunt，Gulp，Webpack，npm，eslint，mocha这样的开发工具。除了深入研究或者自己造轮子之外，对于工具的使用基本上认真学习下官方说明和配置教程就可以很快上手了。&lt;/p&gt;
+
+&lt;p&gt;可以看到前端的技术层面都是偏上层，大部分技能都可以在一周或几周内掌握，对于一个毫无计算机专业基础的人来说成为一名前端的学习曲线要比成为一名后台的学习曲线低，唯一不同的是看到前端这么多技术点一开始可能会懵逼。&lt;/p&gt;
+
+&lt;p&gt;所以对比其他工程师来看，技术和编程的本质并没有变，只是前端变得更加工程化，更加专业化了，前端只要打好基础技术再怎么变也不会太难。&lt;/p&gt;
+
+&lt;p&gt;有趣的是，比起变难，我同样不止一次听到有其他端程序员说前端风气很浮夸，没有技术含量。&lt;/p&gt;
+
+&lt;p&gt;很显然我也不赞同这句话，因为有没有技术含量跟你的职位并没有强相关，而是取决你学习和研究的深度。并且，我认为一个好的前端综合要求会比其他工程师更高。好的工程师不会停留在技术表面，而是深入其原理，这也就意味着一名优秀的前端工程师在技术上除了要应付不断更新的新技术，还要具备深厚的专业理论基础，同时在视觉上还需要一定的审美能力，在产品和交互上也需要考虑到各种实现细节和用户体验问题。从项目角度来看，前端处在一个面而非一个点，这是所有其他工程师都不能比的。&lt;/p&gt;
+
+&lt;p&gt;如果把工程师分为工程应用型和技术研究型两种的话，前端一定属于前者。所以一定要说前端难的话，我认为难的不在于技术，而是如何用有限的技术将产品和服务做到极致，这才是我们最需要关心的。&lt;/p&gt;
+
+&lt;h4 id=&#34;一路向前&#34;&gt;一路向前&lt;/h4&gt;
+
+&lt;p&gt;从需求上来看，前端工程师的需求这几年一直很旺盛，随着前端能力的不断拓展，技术要求越来越高，我相信在今后的几年中肯定会持续旺盛下去。从近几年的发展趋势来看，产品开发的重心在不断往前端转移，前端承载的东西也越来越多。到最后后端和客户端很可能只提供服务和载体的功能，技术重心会转移到前端，甚至连业务也会剥离到“前端”。这时候的“前端”肯定跟现在的前端有所区别，可能更接近全栈一些。因为从业务开发角度来看，全栈的前端，能够做到技术上的前后端分离，业务上的前后端融合，这样既降低了沟通成本，也保证了项目的可维护性，这样的工程师应该是企业最想要的吧。&lt;/p&gt;
+
+&lt;p&gt;从技术上来看，web技术一直在迅速发展，整个技术环境也变得更加开放，这将使前端一直保持活力。这点从各大browser vendors的表现就能看出来。这一年整个web界都散发着open的气息，微软放弃IE斯巴达Edge了；谷歌在今年的I/O大会上力推PWA，指明了Web发展的方向；就连一向封闭的苹果在今年的WWDC上也更加开放了，激进的Safari10居然号称完全支持ES6（ES6才正式发布一年呐），还支持3D touch！（去年底曾写过一篇文章预测Web很可能会支持压力感应事件，不到一年就出现了，这速度确实惊人）&lt;/p&gt;
+
+&lt;p&gt;这种高速发展其实有好也有坏，野蛮生长，盛极而衰，最终还是得由程序员来收拾烂摊子。W3C为Web的未来操碎了心，制定了一个又一个标准，在这野蛮增长的时代和众多的标准当中肯定会有一些奇葩,就比如Houdini。这帮人为了解决CSS兼容问题居然又引入了一个新的标准，开放了浏览器渲染路径，试图用新的标准去解决旧标准不兼容问题，那么问题来了，我要拿什么来兼容这新的标准&amp;hellip;斯认为，Web发展的当务之急就是火狐，苹果，谷歌，微软这几个W3C巨头拆掉各自的浏览器研发团队，降低分裂带给全人类的伤害，并且集结众人之力，成立一个W3C浏览器联合开发大队，就叫Internet FireSafarome！&lt;/p&gt;
+
+&lt;p&gt;当然我是在扯淡，总体上，Web技术的发展会不断增强前端的能力，前端的边界会不断拓展，不仅仅只是Node.js，还会扩展到WoT，甚至是网络所能达到的任何地方。前端未来一定会细分出更多职位，形势一片大好。&lt;/p&gt;
+
+&lt;h2 id=&#34;下一年的期望&#34;&gt;下一年的期望&lt;/h2&gt;
+
+&lt;p&gt;深耕技术，务实基础，少耍流氓多看书。&lt;/p&gt;
+
+&lt;p&gt;也期望自己能有更高的眼光去发现美的东西，等过了一年再回头看自己做的东西就跟屎一样，届时不会因为碌碌无为、虚度年华而悔恨,也不会因为为人卑劣、生活庸俗而愧疚.这样总结的时候就能够说：“我已把自己整个的生命和全部的精力献给了世界上最壮丽的事业！”
+&lt;img src=&#34;https://img.alicdn.com/tps/TB182O2KVXXXXXwXVXXXXXXXXXX-530-368.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;2016.07 杭州&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>如何成为一名Chrome应用开发者</title>
+      <link>http://quanfeng.tech/blog/post/chrome-webstore-dev/</link>
+      <pubDate>Sun, 03 Apr 2016 21:42:50 +0800</pubDate>
+      
+      <guid>http://quanfeng.tech/blog/post/chrome-webstore-dev/</guid>
+      <description>
+
+&lt;p&gt;&lt;img src=&#34;http://upload-images.jianshu.io/upload_images/1665040-6d089496fdf86493.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&#34; alt=&#34;Chrome网上应用店&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Chrome网上应用店有丰富的应用和插件，这些工具极大的提高了我们的生产效率。不过本文不是给大家推荐那些精品插件名单，而是教你如何作为一名开发者，为Chrome贡献自己的插件。&lt;/p&gt;
+
+&lt;h2 id=&#34;准备工作&#34;&gt;准备工作&lt;/h2&gt;
+
+&lt;h4 id=&#34;万里长城第零步-首先你得先翻墙&#34;&gt;万里长城第零步，首先你得先翻墙&lt;/h4&gt;
+
+&lt;p&gt;推荐用收费的VPN，以便于后续的一系列工作。不要把精力都花在了弄免费的翻墙工具上，毕竟收费的也不贵。&lt;/p&gt;
+
+&lt;h4 id=&#34;万里长城第一步-不必去办visa卡&#34;&gt;万里长城第一步，不必去办VISA卡&lt;/h4&gt;
+
+&lt;p&gt;要想在Chrome网上应用店（下文简称webstore）发布应用，需要在webstore&lt;a href=&#34;https://chrome.google.com/webstore/developer/dashboard/&#34;&gt;的开发者信息中心&lt;/a&gt;注册一下，填信息的时候你会发现没有中国大陆地区，所以Google在暗示天朝人民要用假的地址注册，于是我机智的选择了宝岛台湾。&lt;/p&gt;
+
+&lt;p&gt;然后Google还要你提供一个VISA/MasterCard账号，用来缴纳5美元注册费。我差点就真去办VISA卡了，后来网上一查，国内的VISA卡可能会认证失败，去淘宝上买虚拟卡又不放心，奋战一小时后我发现一个神奇的网站：&lt;a href=&#34;https://www.globalcash.hk/&#34;&gt;全球付&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://upload-images.jianshu.io/upload_images/1665040-79d505b3421a5b87.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&#34; alt=&#34;mastercard&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这网站专门用来搞全球购物的，冲100块钱，自动给你生成MasterCard账号，然后你就可以拿这个卡号信息去注册webstore开发者了，分分钟验证通过，并没有网友说的那么麻烦。&lt;/p&gt;
+
+&lt;p&gt;至于剩下的钱，你可以买点儿别的，或者转到其他银行卡里,机智如我。&lt;/p&gt;
+
+&lt;h2 id=&#34;应用开发&#34;&gt;应用开发&lt;/h2&gt;
+
+&lt;h4 id=&#34;基础入门&#34;&gt;基础入门&lt;/h4&gt;
+
+&lt;p&gt;webstore有四种程序类别：应用、游戏、扩展程序、主题背景。&lt;/p&gt;
+
+&lt;p&gt;放心，都是用JS来写的，对于前端来说只有一星门槛。本文不会讲具体基础开发知识，因为这里已经有非常好的教学资料了：
+- &lt;a href=&#34;http://www.ituring.com.cn/book/1421&#34;&gt;Chrome 扩展及应用开发&lt;/a&gt;.来自图灵社区的免费电子书，适合入门。
+- &lt;a href=&#34;http://open.chrome.360.cn/extension_dev/overview.html&#34;&gt;Chrome扩展开发文档&lt;/a&gt;.来自360极速浏览器翻译的官方文档。
+- &lt;a href=&#34;https://developer.chrome.com/extensions&#34;&gt;Chrome 插件开发官方文档(英文)&lt;/a&gt;.前两个适合入门，实际开发的时候还是推荐官方的，查API啥的都很方便。&lt;/p&gt;
+
+&lt;h4 id=&#34;经验之谈&#34;&gt;经验之谈&lt;/h4&gt;
+
+&lt;p&gt;webstore开发本人其实也是新手，但些许经验应该能帮助到其他人：&lt;/p&gt;
+
+&lt;h5 id=&#34;1-如何优雅的调试&#34;&gt;1.如何优雅的调试&lt;/h5&gt;
+
+&lt;p&gt;右键Chrome工具栏的小图标会弹出一个窗口，选择&lt;strong&gt;审查弹出内容&lt;/strong&gt;即可调试。
+但是这种方法极度低效，直接chrome://extensions/找到你插件的ID：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://upload-images.jianshu.io/upload_images/1665040-75cb3e37b3f1b0b8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&#34; alt=&#34;Chrome 插件 ID&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;然后浏览器访问：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;chrome-extension://&amp;lt;插件ID&amp;gt;/插件入口html文件
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;比如我的是：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;chrome-extension://fnfchnalfnjbjbfeccpophocngdgapad/index.html
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后就可以愉快的调试了。&lt;/p&gt;
+
+&lt;h5 id=&#34;2-如何查看其他插件的源码&#34;&gt;2.如何查看其他插件的源码&lt;/h5&gt;
+
+&lt;p&gt;访问chrome://version 找到Chrome插件安装的本机目录：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://upload-images.jianshu.io/upload_images/1665040-b0972ea4f1c6ffa7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&#34; alt=&#34;chrome://version&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;然后找到extension目录，所有插件和数据都在这里，可以随便参考其他插件源码。&lt;/p&gt;
+
+&lt;h5 id=&#34;3-不要把js代码写在html文件里&#34;&gt;3.不要把JS代码写在html文件里&lt;/h5&gt;
+
+&lt;p&gt;出于安全考虑，入口html文件中的JS代码只能通过script标签引用外部脚本文件，内嵌的JS代码会失效的。&lt;/p&gt;
+
+&lt;h5 id=&#34;4-注意国际化&#34;&gt;4.注意国际化&lt;/h5&gt;
+
+&lt;p&gt;webstore面向的是全球用户，你辛辛苦苦写的小工具肯定不想只限于国内用户吧，所以在你的项目里面加上_locales文件夹，写代码的时候时刻考虑到如何才能更好地支持国际化。&lt;/p&gt;
+
+&lt;h5 id=&#34;5-用好google&#34;&gt;5.用好Google&lt;/h5&gt;
+
+&lt;p&gt;开发遇到的问题Google一下一般能找到，StackOverflow 和Google网上论坛这两个站点要尤其留意，大部分问题这上面都有解决方案。&lt;/p&gt;
+
+&lt;p&gt;更多小技巧就不一一列举了，多看官方文档，有更详细的介绍。&lt;/p&gt;
+
+&lt;h2 id=&#34;应用发布&#34;&gt;应用发布&lt;/h2&gt;
+
+&lt;p&gt;应用写好之后打包上传就好了，上传时Google会让你提供几张宣传图片，每一个需要填写的选项后面都有详细说明，需要认真阅读一下。&lt;/p&gt;
+
+&lt;p&gt;发布之后大概过上几个小时就能在webstore搜索到你的应用了：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://upload-images.jianshu.io/upload_images/1665040-aca4040d210fbca7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&#34; alt=&#34;iBookmark&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;至此大功告成，之后可以继续关注你的应用情况，适时更新。
+最后附上自己写的一个Chrome收藏夹插件源码，仅供参考交流：
+&lt;a href=&#34;https://github.com/0326/iBookmark&#34;&gt;https://github.com/0326/iBookmark&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>VR元年－感受虚拟现实的力量</title>
+      <link>http://quanfeng.tech/blog/post/vr2016/</link>
+      <pubDate>Sat, 27 Feb 2016 21:42:50 +0800</pubDate>
+      
+      <guid>http://quanfeng.tech/blog/post/vr2016/</guid>
+      <description>
+
+&lt;h2 id=&#34;vr元年&#34;&gt;VR元年&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&#34;//segmentfault.com/img/bVs3em&#34; alt=&#34;图片描述&#34; /&gt;
+虚拟现实（Virtual Reality，简称VR），在大部分人眼中似乎还是一个概念，总觉得离我们很遥远。然而在今年年初的CES（国际消费类电子产品展览会）上，VR技术大放光彩，SONY VR，Oculus Rift，Gear VR，HTC VIVE等设备引爆了人们的眼球，之后在MWC（世界移动通讯大会）上又成为一大焦点。而即将在下个月举行的GDC（游戏开发者大会）上，还专门新增了VR开发的内容。&lt;/p&gt;
+
+&lt;p&gt;其实对VR技术的研究早在上个世纪就开始了，近几年随着电子技术的发展，已广泛受到人们关注，随着众多公司的投入和VR设备的发布，VR终于在今年爆发了。&lt;/p&gt;
+
+&lt;h2 id=&#34;vr究竟是什么&#34;&gt;VR究竟是什么&lt;/h2&gt;
+
+&lt;p&gt;一谈到VR大家肯定会想到不少电影中的场景，比如黑客帝国，盗梦空间，源代码，明日边缘&amp;hellip;然而很遗憾，现在的VR技术并不能达到电影中那种沉浸而真实的效果。&lt;/p&gt;
+
+&lt;p&gt;顾名思义，虚拟现实就是用计算机制造的一个虚拟世界，然后通过佩戴一系列设备让人觉得这个虚拟的世界很真实。它有四个主要特征：&lt;/p&gt;
+
+&lt;h4 id=&#34;存在感&#34;&gt;存在感&lt;/h4&gt;
+
+&lt;p&gt;这个主要靠计算机模拟，渲染出来的场景越真实，人的存在感就越强。以目前的计算机发展水平，渲染出一个以假乱真的世界还是没有问题的。&lt;/p&gt;
+
+&lt;h4 id=&#34;自主性&#34;&gt;自主性&lt;/h4&gt;
+
+&lt;p&gt;自主性指的是虚拟世界中得物体都遵循现实物理定律而运动，这个也是比较好模拟的。&lt;/p&gt;
+
+&lt;h4 id=&#34;感知性&#34;&gt;感知性&lt;/h4&gt;
+
+&lt;p&gt;目前大多数VR厂商做的都是视觉感知，技术比较牛逼的在研究听觉、嗅觉、触觉、运动等感知，并开发相应的设备来增强人的真实存在感。&lt;/p&gt;
+
+&lt;h4 id=&#34;交互性&#34;&gt;交互性&lt;/h4&gt;
+
+&lt;p&gt;用户可以和模拟出来的世界进行交互，要完全做到这一点还有很长的路要走。&lt;/p&gt;
+
+&lt;p&gt;现在的VR技术主要集中在存在感和自主性的研究上，感知上也主要是视觉上做的比较多。现在大部分人能体验到得也就仅限于此了。当这四个特征都比较完善时，就会完成从VR虚拟现实到AR增强现实，从AR增强现实到MR混合现实的演变了，届时电影中得桥段就能真正在生活中上演了。&lt;/p&gt;
+
+&lt;h2 id=&#34;vr带来的冲击&#34;&gt;VR带来的冲击&lt;/h2&gt;
+
+&lt;p&gt;以目前的发展程度，VR在近三五年内不会对人类产生革命性的冲击，但是以下行业会有革命性的突破：
+- 游戏行业。这个绝对要排第一个有木有！所有现实中体验不到的你都可以去游戏里面体验，潜力无限啊。
+- 色情行业。请自行脑补。
+- 电影视频行业。以后谁再说去看3D，IMAX啥的都弱爆了，我要去看VR电影！以后再看演唱会直接戴上VR设备，打开电视机，亲临现场有木有！
+- 社交。社交是全人类的需求，VR可以为其带来很多新姿势，尤其是单身狗，请自行发挥想象力。
+- 电商。现在网上买衣服啥的都是看图片介绍，以后可以直接VR试穿啦！
+- 教育，医疗，军事，旅游，房地产好多好多&amp;hellip;没有做不到的，只有不想改变的。&lt;/p&gt;
+
+&lt;p&gt;VR带来的行业冲击，就好比互联网当年对传统行业的冲击，当然这个冲击的时间周期，应该会比互联网长的多。&lt;/p&gt;
+
+&lt;h2 id=&#34;vr行业现状&#34;&gt;VR行业现状&lt;/h2&gt;
+
+&lt;p&gt;如果说今年是VR元年，那么一波浪潮最开始的时候会是神马样子呢？&lt;/p&gt;
+
+&lt;p&gt;私认为一个字：&lt;strong&gt;乱&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;据艾媒发布的数据，至2020年，中国VR市场规模将超过550亿，相当于2012年的中国移动互联网市场规模。虽然离爆发还有一段距离，但是互联网各大佬已经开始布局了。在风口前连猪都想冲上去，更别说人了，近两年肯定会涌现出一大批VR公司，有大公司撑腰的，也有小公司不怕死的，有一股脑冲上去的想改变世界的，也会有借概念炒作去圈钱的。目前我们需要重点关注的势力有：&lt;/p&gt;
+
+&lt;h4 id=&#34;三星和facebook&#34;&gt;三星和facebook&lt;/h4&gt;
+
+&lt;p&gt;三星的Gear VR和老牌VR厂商Oculus有合作，Oculus下面有大名鼎鼎的Oculus Rift，而facebook又在2014年收购了Oculus，于是三星和facebook决定联手，以三星的硬件势力和facebook的软件势力，这两兄弟组成目前最强CP。&lt;/p&gt;
+
+&lt;h4 id=&#34;htc和valve&#34;&gt;HTC和Valve&lt;/h4&gt;
+
+&lt;p&gt;HTC和Valve联手推出了HTC Vive，这两兄弟追求的是极致的体验，控制器，头盔，感应器完美结合，据说沉浸感非常强。&lt;/p&gt;
+
+&lt;h4 id=&#34;sony-psvr&#34;&gt;SONY PSVR&lt;/h4&gt;
+
+&lt;p&gt;同为三大头显之一的PSVR，个人觉得它的最大优势就是其先天的游戏基因，日后在VR游戏领域必将雄踞一方。&lt;/p&gt;
+
+&lt;h4 id=&#34;微软-谷歌&#34;&gt;微软&amp;amp;谷歌&lt;/h4&gt;
+
+&lt;p&gt;这两家并没有合作关系，放在一起是因为这两兄弟都盛产黑科技。微软的HoloLens，谷歌的Google Glass严格的说是AR，虽然目前来说并不算成功，但是后续动作还是很值得关注的。谷歌还推出了Cardboard来试水，将VR的体验拉到了平民水平，后续应该会推出更高端的产品。&lt;/p&gt;
+
+&lt;p&gt;除此之外，以Magic Leap,Meta,蚁视(ANTVR)，暴风魔镜等新兴团体为代表的冲锋队，以Apple,Intel,NIVIDA,LG,NOKIA等大公司为代表炮兵团，以百度，腾讯，阿里(投资了Magic Leap，阿里不是一家VR公司，是要让别人做VR的公司),TVR,uSens等国内天团组成的工农红军，都加入了这场乱斗。&lt;/p&gt;
+
+&lt;h2 id=&#34;vr创业者&#34;&gt;VR创业者&lt;/h2&gt;
+
+&lt;p&gt;为了添乱，不妨试想一下假如要去做VR创业，应该具备哪些条件，从哪些方面入手。&lt;/p&gt;
+
+&lt;p&gt;首先粗略的把VR领域分为VR设备开发，VR应用开发，VR内容生产。先从设备下手。&lt;/p&gt;
+
+&lt;h4 id=&#34;成立一家vr硬件公司&#34;&gt;成立一家VR硬件公司&lt;/h4&gt;
+
+&lt;p&gt;首先硬件的开发成本比软件的开发成本要低很多，先从硬件入手。VR最关键的硬件是头显设备，所以我们先买一个Gear VR或者Cardboard，然后拆开看下内部构造和原理，然后自己仿造一个，修改一下外观，加上一些辅助设备，然后以人体工学，用户体验为口号宣传和推广，一家简单的VR硬件公司就成立了。当然，我们的产品并不仅仅是这个，这只是我们推广市场的第一步，等拿到融资之后，我们还会开发出一系列可穿戴设备来增强体验，并聘请业内专家打造专业的VR系统&amp;hellip;&lt;/p&gt;
+
+&lt;h4 id=&#34;成立一家vr软件公司&#34;&gt;成立一家VR软件公司&lt;/h4&gt;
+
+&lt;p&gt;现在的投资人越来越精了，上面这个一看就是唬人的，所以我决定依托现有的硬件平台，比如Oculus，Sony，使用业内先进的VR引擎，在他们的平台上开发VR应用，然后用户通过在相应地VR商店上购买我们的应用来盈利。这个想法实在太棒了，就差程序员了！&lt;/p&gt;
+
+&lt;h4 id=&#34;成立一家vr内容公司&#34;&gt;成立一家VR内容公司&lt;/h4&gt;
+
+&lt;p&gt;好像直接做VR开发成本都蛮高的，而且现在是浪潮初期，风险也比较大，保险一点我们回归到VR内容生产。你想啊，那么多厂商做设备，那他们设备上总得有一些小视频啥的来吸引用户吧。而且这个成本也很低，只要买一个VR摄像头就可以拍记录片了。然后把我们的片子放在应用商店里面供用户免费下载，到了高潮部分再提示用户收取一点手续费&amp;hellip;听起来好像很不错的样子，等我们品牌打响之后可以打造出自己的VR内容平台，让更多地人可以拍片子，做大之后还可以从B2C分离出B2B，做差异化运营，我们的使命就是让用户真正体验到VR带来的乐趣，让天下没有难拍的片子！&lt;/p&gt;
+
+&lt;h2 id=&#34;vr开发者&#34;&gt;VR开发者&lt;/h2&gt;
+
+&lt;p&gt;VR给人带来了全新的体验和交互方式，这也让VR开发比传统软件开发难度更大。&lt;/p&gt;
+
+&lt;h4 id=&#34;vr设备开发&#34;&gt;VR设备开发&lt;/h4&gt;
+
+&lt;p&gt;VR设备包括显示屏，传感器这样的硬件设备，也包括与之配套的软件设备,整个体验过程中的环境建模，系统合成，虚拟现实同步，实时计算，以及消除眩晕等每一个点的介入成本都很高，非平民开发者能玩的，本人对此也知之甚少，就不多说了。&lt;/p&gt;
+
+&lt;h4 id=&#34;vr游戏开发&#34;&gt;VR游戏开发&lt;/h4&gt;
+
+&lt;p&gt;游戏开发都需要Unity，虚幻，CryENGINE，寒霜这样的游戏引擎，而在VR游戏领域，走在前面的是Unity和虚幻4（CE4）。CE4对VR的支持要强于Unity，画面也更加逼真精良，但是学习成本和开发成本都比较高，平台限制也较多。Unity虽然技术上比不过人家，但是在应用数量，开发社区上要远高于CE4，并且上手相对简单，还跨平台，因此要做个人VR游戏开发，Unity是最佳选择。&lt;/p&gt;
+
+&lt;p&gt;这些引擎都会暴露出VR SDK给开发者，相对于设备开发成本已经很低了。&lt;/p&gt;
+
+&lt;h4 id=&#34;vr应用开发&#34;&gt;VR应用开发&lt;/h4&gt;
+
+&lt;p&gt;应用开发所能使用的技术就更多了，除去游戏引擎，你可以使用DirectX,OpenGL,WebGL，编程语言可以用C++,C#,Lua,JS&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;而作为一名前端，最关注的自然是WebGL和JS在VR界的发展，以及未来的Web会在VR方向走多远。&lt;/p&gt;
+
+&lt;p&gt;火狐已经出了专门的WebVR API和MOZVR团队来研究VR，致力于将虚拟现实引入到Web中来，若真如愿，那么今后的Web开发和交互方式也必将受到冲击。&lt;/p&gt;
+
+&lt;h2 id=&#34;webvr&#34;&gt;WebVR&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&#34;//segmentfault.com/img/bVs3eo&#34; alt=&#34;图片描述&#34; /&gt;
+经常有人会把WebVR和Unity等VR开发引擎做对比，但我觉得这样并不合理，WebVR的使命是&amp;rdquo;BRING HIGH-PERFORMANCE VIRTUAL REALITY TO THE OPEN WEB&amp;rdquo;,是基于互联网的交互式虚拟现实支持。目前来看比起专业的Unity还是相去甚远，但是作为VR的开发入门却是一个不错的选择，宝宝已入手Cardboard，打算基于Firefox Nightly + WebVR + A-Frame来体验VR的开发，之后会不定期分享开发历程。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;WebVR草案： &lt;a href=&#34;https://mozvr.github.io/webvr-spec/&#34;&gt;https://mozvr.github.io/webvr-spec/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;WebVR API：&lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/API/WebVR_API&#34;&gt;https://developer.mozilla.org/en-US/docs/Web/API/WebVR_API&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>创业红海-大学生创业实录</title>
+      <link>http://quanfeng.tech/blog/post/studengt-entreprencurship/</link>
+      <pubDate>Thu, 01 Jan 2015 21:42:50 +0800</pubDate>
+      
+      <guid>http://quanfeng.tech/blog/post/studengt-entreprencurship/</guid>
+      <description>
+
+&lt;p&gt;&lt;img src=&#34;http://cdn1.tnwcdn.com/wp-content/blogs.dir/1/files/2015/12/Untitled-design-11.jpg&#34; alt=&#34;浅谈大学生创业&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;大学生到底适不适合创业，其实就是天时地利人和。&lt;/p&gt;
+
+&lt;h2 id=&#34;从工作室到公司&#34;&gt;从工作室到公司&lt;/h2&gt;
+
+&lt;p&gt;假如当初没有选择去团队的话，恐怕就不会抵达另外一个精彩的世界了。从一开始打杂做外包，到写后台，最后到前端，工作室从学生组织发展成公司，这其中发生太多。一起走过来的小伙伴们，也在这过程中获得了超乎常人的东西。创业团队的确是最锻炼人的地方，自己在这1年多的时间里学到很多。下面大致把这1年半分为三个时期：&lt;/p&gt;
+
+&lt;h3 id=&#34;外包&#34;&gt;外包&lt;/h3&gt;
+
+&lt;p&gt;最开始刚进入团队，水平还比较菜，好在之前写过网页，就去打车项目调页面了，而且做外包还有钱赚~。所有的东西基本是边学边用，当时看pyramid还是相当痛苦的。后来由于人员变动，前端后端都要写，一些web开发的基本技术都还不了解，简直弱爆了，最后只能硬着头皮不断补课了。这段时间前后端都没有涉及到过深的东西，只是会用会写，仅此而已。&lt;/p&gt;
+
+&lt;h3 id=&#34;创业&#34;&gt;创业&lt;/h3&gt;
+
+&lt;p&gt;后来外包搁浅了，加入了小伙伴的创业项目，这段时间涉及到的东西就更多了，除了写代码，还要帮着写文档，做PPT，跟老大去参加各种路演还有演示。也就是在这时体会到了真正的创业，体会到了互联网创业的成本是可以有多廉价。在此期间，一方面做产品，做了1年有木有，需求改了无数次有木有，真是产品虐我千百遍，我待产品如初恋。&lt;/p&gt;
+
+&lt;p&gt;另一方面还要推销产品，就是去拉投资。其实项目做得是非常棒的，有好些个投资人想投，但都先是被学院那边拦下了(学院也入股了)，毕竟有些事不是你有钱就能行的，还要有资源。也就是在这个时候，去参加创业路演的时候见识了一些投资人，包括光谷创咖的老总和一些&amp;rdquo;大学生CEO&amp;rdquo;，最终拿了创咖的钱，成立公司入驻了光谷创业咖啡的腾讯创业基地。这段时间技术上依旧没有深入，反倒是见识增加了不少。&lt;/p&gt;
+
+&lt;h3 id=&#34;公司&#34;&gt;公司&lt;/h3&gt;
+
+&lt;p&gt;成立公司后团队管理稍微好点了，一是有个像样的办公室了，二是有工资了，三是职能划分更清楚了，除此之外，没有感觉到其他区别。基本还是松管理，而且成员大多是兼职，一边上课一边工作。&lt;/p&gt;
+
+&lt;p&gt;后来由于现实原因，以及考虑到自己的职业发展，还是决定退出，出去看看大世界。&lt;/p&gt;
+
+&lt;h2 id=&#34;大学生创业&#34;&gt;大学生创业&lt;/h2&gt;
+
+&lt;p&gt;大学生到底适不适合创业是一个很有争议性的话题。各行各业的创业行情可能不同，不过我是学IT的，只关心互联网创业。华科每年都有很多校友选择了创业这条路，有很多都取得了不错的成绩，比如PPLive，海豚浏览器，米折网，海投网，面包旅行，脸萌，恋爱笔记，奇米网络&amp;hellip;他们当中有在校直接创业的，也有工作后创业的，能够发展到现在实属不易。之所以说不易，因为创业本身就很艰难，而且他们现在仍然在努力奋斗中。成功者头上都会有各种光环，这种光环散发着无穷的吸引力，诱使一大批人投入创业的海洋。他们不会注意到，征服海洋的永远只是少数人，更多的人都死在了海底。&lt;/p&gt;
+
+&lt;p&gt;网上看过很多关于大学生创业的文章，在&lt;a href=&#34;http://www.woshipm.com/zhichang/110475.html&#34;&gt;创业教父箴言:创业之前&lt;/a&gt;中，Paul Graham就表示说不要在大学里创业。李彦宏也表示不支持大学生创业，原因是学生直接创业失败率太高，而这样的失败对学生的青春年华会造成很不利的影响。上次去参加青桐汇路演，见了不少投资人，市长大人发言时表示支持大学生创业，而到了德迅老总曾李青发言时，又流露出并不看好大学生创业的意思。&lt;/p&gt;
+
+&lt;p&gt;不管是网上看到的还是自己亲身体验到的，对于大学生创业有人支持也有人反对。对于投资人来说不支持大学生创业，因为掏的是他们的钱，而投大学生的话失败率可能更高一些;对于学校就业指导中心的老师或者政府官员，他们当然要鼓励大学生创新创业，这是国家政策。不同身份的人发表观点时可能多少会带一点有色眼镜，有着不同的考虑。就我个人观点而言，以一个&lt;strong&gt;人&lt;/strong&gt;的角度来看，大学生到底适不适合创业，可能跟你是不是大学生就没多大关系。&lt;/p&gt;
+
+&lt;p&gt;这样说有点别扭，明确的说，我认为衡量一个人适不适合创业不在乎他是不是大学生，而在乎他是否具备创业者该有的素质和条件。你不鼓励大学生创业，但的确有很多成功的例子;你说创业失败带来的挫折影响青少年身心健康，但人生面临的挫折多的去了，不在乎是不是创业带来的。每个人的经历和性格都不一样，有的人可能在学生阶段心智和阅历就赶上了一个成年人，有的人可能出去工作了好几年也不见得有创业者的气质。大学生创业现在是一个很热门的话题，因为有很多人都投入了创业的海洋致使其成为一种普遍现象，而之所以越来越多的人选择“跳海”，个人觉得有两个原因：前有楷模，后有人推。&lt;/p&gt;
+
+&lt;h2 id=&#34;创业红海&#34;&gt;创业红海&lt;/h2&gt;
+
+&lt;p&gt;小的时候有段时间烤烟很赚钱，于是村里干部就鼓励乡亲们都去种烟烤烟卖。在砖家的指导下，全村干起了烤烟的活，最后到去卖的时候烤烟已经烂大街了。后来砖家又说种黄姜挣钱，于是又有人被坑了，还好老妈机智，没有听砖家的。干什么事，做的人多了，就容易形成一片红海。现在的创业环境越来越好了，政策更优，天使更多，从大势上看是非常好的，是创新创业机制的不断完善。从现实的角度来看却是非常残酷的，让更多的孩子互相厮杀角逐，甚至去和大公司竞争，优胜劣汰，在探索中成长，这其中总会产生胜利者。对投资人来说，投资10个团队就算9个都失败，最后还有一个成功，那么投资人都赚了。对于创业者来说，成功的同学走向了CXO之路，名利双收，继续奋斗。失败的同学，则要承担所有打击，而且走的越远，这种打击就越严重。&lt;/p&gt;
+
+&lt;p&gt;下面总结一下自己在接触创业（互联网创业）这个过程中的一些思考，先占个坑。&lt;/p&gt;
+
+&lt;h3 id=&#34;初创成员很重要&#34;&gt;初创成员很重要&lt;/h3&gt;
+
+&lt;p&gt;首先所有核心成员必须要有共同的追求和梦想，并且都是能力很强，各有所长的人(成员间的能力和阅历差距不能太大，原因后面分析)。团队人数2-5人最佳，最好有一名核心BOSS。&lt;/p&gt;
+
+&lt;p&gt;如果创始成员股权过于平均，那么就容易产生分歧，不利于凝聚，要知道很多成功的企业都是在核心BOSS的固执下发展起来的。但是股权又不能过于集中，最好其他所有人联合起来时能够干掉大BOSS的想法，防止“独裁”，腾讯创业早期的股权分配就很有参考价值。我们团队的一个问题就是权力过于集中，“独裁”很严重。&lt;/p&gt;
+
+&lt;p&gt;成员必须要有共同的追求是必须的，不然发展到后面有人退出不干，对整个公司发展非常不利，这时又很难找到合适的合伙人，只能贻误商机。合伙人当然要找比较牛逼的人，这样公司发展会顺水很多。&lt;/p&gt;
+
+&lt;h3 id=&#34;创业初期专注产品&#34;&gt;创业初期专注产品&lt;/h3&gt;
+
+&lt;p&gt;互联网创业一定要有技术人员。前期如果没有做出实质性的东西，只拿个商业计划书出来是不会让投资人感兴趣的。而且产品需求一定会经常改，程序员的工作强度非常大，前期技术人员必须占主导地位。至于宣传推广，等拿到投资之后，各方面资源和人脉都有了再推广会省事的多。所以前期专注做好产品就好啦，是金子总会引人注意的。&lt;/p&gt;
+
+&lt;h3 id=&#34;有钱之后依然要专注做产品&#34;&gt;有钱之后依然要专注做产品&lt;/h3&gt;
+
+&lt;p&gt;拿到投资之后就容易曝光，曝光之后就会引起媒体的注意，这个时候可能会有各种访谈和会议。创始人就那么几个，如果把时间都浪费在采访上会影响开发进度。而且万一被大公司注意到了就危险了。互联网以用户为王，做好产品和服务才是优先级最高的。&lt;/p&gt;
+
+&lt;h3 id=&#34;尽早脱离学生气&#34;&gt;尽早脱离学生气&lt;/h3&gt;
+
+&lt;p&gt;从走向创业这条路不归路开始，你就不是在与校园里的同学竞争，而是在社会上竞争。如果成立公司之后还在以学生的思维方式来办事就会带来很多问题。团队成员大多是学生，一边要上学，一边要上班，再辛苦，也比不上一个普通人上一天的班的工作效率。所以我们的开发效率很低，找学生兼职也是致此的原因之一。所以拿到投资之后还是去外边招全职吧，工资福利好是必须的，这种代价是值得的。如果太抠舍不得花钱，最终坑的还是自己。&lt;/p&gt;
+
+&lt;h3 id=&#34;小心投资人&#34;&gt;小心投资人&lt;/h3&gt;
+
+&lt;p&gt;找投资一定要谨慎，毕竟双方都只是建立在利益合作的基础上的。现在的创业团队要拿到上百万的投资并不难，如果只着眼于眼前利益，一不小心可能就成了投资人的打工仔了。不光要有钱，还要有资源，有利于长期合作和长远发展(当然这是最好的情况，如果实在很难拉到投资也没得选，只是后期要把股份赎回来会花相当大的代价)。曾经见过一个很大的笑话，华科某创业团队发展好了，然后说是为了回馈团队(团队之前有投资占股)，要用50万换取团队的百分之xx的股份。好吧，我承认如果是我的话我也会这么做，只是还专门拿出来说是为了“回馈团队”，我还真说不出口。&lt;/p&gt;
+
+&lt;h3 id=&#34;团队管理&#34;&gt;团队管理&lt;/h3&gt;
+
+&lt;p&gt;毫不留情的说，我们的管理很烂。有很多创业者离开团队的原因都是因为管理不当。团队都有一名核心BOSS，如果BOSS连这几个初创成员都管不好，以后更别说一个公司了。&lt;/p&gt;
+
+&lt;p&gt;一个合理的管理方式应该是本着公平，公正和开放的原则的。举个例子：某博士创业拉来了几个本科生和研究生作为合伙人，该博士作为核心，技术能力和阅历都比其他成员强，其他人对博士的能力也非常认可。但是该博士总是对其他人不放心，所有的事都亲力亲为。有时候开会的时候，某些成员没到场，博士也没当回事。团队间交流个人未来发展时，并不是大家坐在一起洽谈，而是博士将其他成员叫到房间单独讨论，搞得神神秘秘的。&lt;/p&gt;
+
+&lt;p&gt;很显然这不是一个正常的创业团队氛围，一开始我认为是博士本身的问题，后来发现导致这种现象的根本原因是团队结构不合理。成员间能力阅历差距过大，很难形成一种平等的地位。假如所有成员的能力阅历都与博士相当，那么就不存在博士所有事都不放心的问题，权力就更容易分配出去，各人各司其职，充分体现自己价值，也就不会存在地位相差过大的问题。&lt;/p&gt;
+
+&lt;h3 id=&#34;重视每个人的价值&#34;&gt;重视每个人的价值&lt;/h3&gt;
+
+&lt;p&gt;成员间能力有差距是必然，有的人贡献大，有的贡献小这是常有的事。但是大家必须重视每个人的价值！人都是有自尊的动物，如果我的价值在这里得不到认可，那我为什么还要留在这里？这一点不光是在创业团队，在任何公司都一样。只不过大公司都有着比较完善的价值体系和激励机制，问题比较小。而学生团队往往在这方面处理的不太成熟，问题就得以放大了。&lt;/p&gt;
+
+&lt;h2 id=&#34;多余的话&#34;&gt;多余的话&lt;/h2&gt;
+
+&lt;p&gt;创业需要强烈的决心和勇气，或者走投无路的放手一搏。现在来看我不具备任何一点，所以还是先准备出去见见世面。成于此文，以备他日。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;2015.01 武汉&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>校园招聘杂记</title>
+      <link>http://quanfeng.tech/blog/post/recruit-offer/</link>
+      <pubDate>Sun, 14 Sep 2014 01:42:50 +0800</pubDate>
+      
+      <guid>http://quanfeng.tech/blog/post/recruit-offer/</guid>
+      <description>
+
+&lt;p&gt;找完工作终于可以好好休息一番了，人生又将迈向一个新的阶段。&lt;/p&gt;
+
+&lt;h2 id=&#34;梦想&#34;&gt;梦想&lt;/h2&gt;
 
 &lt;p&gt;小时候喜欢看动画片，于是上课的时候经常在下面画画，梦想着当一名漫画家。由于漫画画的好，考上了当地最好的一所初中。城里比乡下好，眼界更加开阔了，觉得画漫画挣不了钱，于是梦想就进化成了一名动画师，要做出好多好看的动画片。后来觉得国漫太让人捉急了，做动画师无法拯救世界，于是梦想就超进化成了动画导演，要做一名像宫崎骏一样的大师，去影响世界。初中毕业时老师叫谈谈梦想，我说我想考XX美院，要从事动画媒体事业。老师说美院什么的是给土豪准备的，一般人想想就可以了，不要太认真。我认真地思考了一下，觉得老师说的好有道理，于是顺利的考上了当地最好的一所高中。从那以后上课再也不画漫画了，人变机智了，成绩也变好了，妈妈再也不用担心我学习了~&lt;/p&gt;
 
-&lt;p&gt;就这样，我顺利的考入了一所很基情的大学，梦想也被究极进化成了一名程序员，程序员，序员，猿……啊呜，现在，算是拿到了一份很不错的offer，找到了一份很适合自己的job，迭代的梦想就这样实现了，好高兴，好心塞。&lt;/p&gt;
+&lt;p&gt;就这样，我顺利的考入了一所很基情的大学，梦想也被究极进化成了一名程序员，程序员，序员，猿&amp;hellip;&amp;hellip;啊呜，现在终于找到了一份程序员的工作，迭代的梦想就这样实现了，好高兴，好心塞。&lt;/p&gt;
 
-&lt;p&gt;前端&lt;/p&gt;
-
-&lt;p&gt;记得刚开始学前端的时候感觉倒是蛮简单的。我想正是因为如此底的门槛，导致许多程序员认为前端没有多大技术含量。但是，随着学习的深入，我发现前端比想象的要复杂的多。包括面试官也跟我说过，你所理解的前端还是过于狭隘，应该要看到更广阔的东西。举个很简单的例子：CSS。CSS曾被认为是设计师的语言，而不是程序员的语言，因为他的作用无非就是选择指定的标签加上样式效果，根本没有什么深入的东西。所以直到今天，仍然有很多人认为这是一门不用怎么学就可以精通的语言。从某种程度上讲，这样认为的，大部分只是新手或者没怎么写过web前端的人。真正要把这东西写好，从自身的表现，到与HTML/JS的配合，再到优化，提升团队效率等，是极不容易的。随着CSS的发展，她已不再是简单的标签语言，从代替table来布局，到响应式适配；从无章无法到模块化，甚至到SCSS/Stylus这些预处理器；从高级选择器到动画处理，再到像Google Material Design 页面间转场效果应用；从CSS icon sprite到icon font，再到svg/canvas的应用，她已不再是她（此段来自网络，说的好有道理)。CSS技术的发展并不只是增加一些新特性新接口这么简单，而是从根本上改变的CSS的开发方式。包括今年很火的AngularJS，简直颠覆了传统前端开发理念。这还只是冰山一角，前端的新技术层出不穷，比起其它技术领域变化都要快，这就注定一名前端工程师要是一个爱折腾的工程师。&lt;/p&gt;
-
-&lt;p&gt;前端涉及技术面非常广，但是并不“深”，这里的“深”并非说前端没有技术含量，而是说没有像诸如后台/系统工程师等深入计算机底层或算法研究。因此爱玩“深”技术的Geek们不愿意写前端，而爱设计的孩子们又不愿意写代码，所以将技术和设计完美结合在一起的任务就落在前端身上了。个人认为，前端的“深”不只是像一般程序员深入技术本身，也不是像设计师一样“深”入设计和交互，而是能兼顾两者，最终将产品以最完美的形态呈现给用户。因此，一个前端所要掌握的技能应该是要近乎全栈的：&lt;/p&gt;
-
-&lt;p&gt;HTML/CSS/JS等前端技术本身
-java/php/python/node 等服务端技术和脚本语言
-美术，设计和交互
-产品设计，毕竟是与用户最近的工程师
-除了第一项水很深之外，其他几项踩多深要看个人喜好。技术无止境，前端无下限，总之无限坑。&lt;/p&gt;
-
-&lt;p&gt;招聘&lt;/p&gt;
-
-&lt;p&gt;实习生招聘4月开始的吧，面试的第一家就是企鹅。人生的第一场面试啊~想想都好激动~。结果一面时就惨跪了…….于是又继续投了阿里，然后很开心的笔试就被刷了。后来又投了熊掌，一面过了，但是过了快一个月才来二面，由于是电面，而且当时信号差，电话断了四五次。还没面试完我就已经心凉了。大公司想是没戏了，于是直奔小公司。等拿到实习offer的时候，居然又接到了熊掌公司的电话，说有个三面……呵呵，当时就尴尬了，这么捉弄我，我还不去了……&lt;/p&gt;
-
-&lt;p&gt;于是7月份去了广州实习。刚“出世”时总是带着几分好奇和激情，很认真的去学习去工作。每天都很规律，日子也过得安逸，于是没过多久，这种规律和安逸变成了无聊。它迫使你去思考一些东西。这些东西不是你在这里是否有良好发展前景，你能否在这里升职加薪，因为这些问题在找工作前就应该考虑到。所以让我更迷茫的是：这是否就是我今后的生活？&lt;/p&gt;
-
-&lt;p&gt;广州的气候属于湿热型，夏天在外面呆着感觉就像做天然桑拿一样。可能是自己习惯了干热型气候，对于这种城市只能归类为“不适宜居住”的城市之列。不过抛去“自然”因素，羊城的“人文”特色倒是蛮吸引人的，比起大武汉要好玩的多，除去“热带风情”，岭南文化，城建特色这些东西，印象最为深刻的就是————在这里买衣服都好便宜！！！&lt;/p&gt;
-
-&lt;p&gt;实习公司在软件园那边，每天朝九晚六，近一个多月时间，其实有一大半的时间在进行培训学习。我是测试开发，正规工作其实就是玩游戏，写测试用例和脚本。工作难度并不大，同事们也都很好(几乎都是漂亮妹子~)对于一个应届生来说，能有个月薪过万，工作还很轻松的job应该算是不错了，可就是这样过于“安稳”的工作，让我感觉是在浪费青春。&lt;/p&gt;
-
-&lt;p&gt;进一步来看，只要选择工作，无论是在大公司还是小公司，每天必定都是按部就班的，虽然工作上会让你遵循DRY原则，但是生活上其实每天都在Reapt Yourself。这是一个普遍问题，读书，工作，谈恋爱，如果不是真爱，早晚得分开。于是乎我又花了几个星期来调整心态和思考人生（此处省略千万字），最终辞了广州的实习，9月份回学校参加校园招聘。&lt;/p&gt;
-
-&lt;p&gt;实招的时候其实还蛮迷茫的，不知道自己真正适合什么，四家公司投了四个不同的岗位(后台，系统，测试，产品都投了，现在想想真是吓死了)。校招的时候就明确多了，只投了前端开发，顺利拿到了阿里的offer。面试过程还是蛮顺利的，阿里的面试效率是我见过的公司中最高的，三轮面试一个上午就结束了。至于招聘要求，大概是笔试的时候会pass掉专业基础不行的，一面会pass技术不成熟和表达能力不行的，二面会pass没有亮点的，三面pass人品不行的(应该不会有人死在这里吧…)，如果是特别牛逼人还会有个交叉技术面试。所以最终能够通过面试的大多是研究生，想我一本科生能走到这里，也是蛮幸运的。&lt;/p&gt;
-
-&lt;p&gt;之后又拒绝了两家公司的面试邀请，因为我很清楚我现在想要的是什么，以及以现在的能力我能做什么。总的来说，整个招聘期间只面了四家公司，一家失败，一家放弃，两家成功。没有像那些大神一样当offer收割机，一是人家确实牛逼，我等望尘莫及;二是，总感觉这种行为就跟找备胎一样，好不道德。&lt;/p&gt;
-
-&lt;p&gt;未来&lt;/p&gt;
-
-&lt;p&gt;这一路走来不容易，但都在计划之中。遇到过各种各样的人，无论是相信我的还是怀疑我的，都要谢谢你们。当你处在人生低谷时，当你正在执着追求着自己想要的东西时，很容易会引来周围怀疑的目光与轻视，可悲的是这些目光不是来自陌生人，而是来自身边的亲戚和朋友。大学给了我们充足的时间去思考自己的未来将会是怎样一种人生，如果觉得时间不够，可以花更多的时间都没关系。无论是工作，读研，还是创业，找到最适合自己的才是最好的，或许现在所处的状态并不如意，或许现在正处在最艰难的时期，或许就算一直努力也不会有结果，但如果现在放弃了，就会一无所有。&lt;/p&gt;
-
-&lt;p&gt;最后，借马云IPO路演时一句话：今天很不容易，明天更加困难，但是未来是无限美好的。因此，我们必须更加努力，才能够在未来的漫漫征程中赢得胜利。&lt;/p&gt;
-
-&lt;p&gt;小时候喜欢看动画片，于是上课的时候经常在下面画画，梦想着当一名漫画家。由于漫画画的好，考上了当地最好的一所初中。城里比乡下好，眼界更加开阔了，觉得画漫画挣不了钱，于是梦想就进化成了一名动画师，要做出好多好看的动画片。后来觉得国漫太让人捉急了，做动画师无法拯救世界，于是梦想就超进化成了动画导演，要做一名像宫崎骏一样的大师，去影响世界。初中毕业时老师叫谈谈梦想，我说我想考XX美院，要从事动画媒体事业。老师说美院什么的是给土豪准备的，一般人想想就可以了，不要太认真。我认真地思考了一下，觉得老师说的好有道理，于是顺利的考上了当地最好的一所高中。从那以后上课再也不画漫画了，人变机智了，成绩也变好了，妈妈再也不用担心我学习了~&lt;/p&gt;
-
-&lt;p&gt;就这样，我顺利的考入了一所很基情的大学，梦想也被究极进化成了一名程序员，程序员，序员，猿……啊呜，现在，算是拿到了一份很不错的offer，找到了一份很适合自己的job，迭代的梦想就这样实现了，好高兴，好心塞。&lt;/p&gt;
-
-&lt;p&gt;前端&lt;/p&gt;
+&lt;h2 id=&#34;前端&#34;&gt;前端&lt;/h2&gt;
 
 &lt;p&gt;记得刚开始学前端的时候感觉倒是蛮简单的。我想正是因为如此底的门槛，导致许多程序员认为前端没有多大技术含量。但是，随着学习的深入，我发现前端比想象的要复杂的多。包括面试官也跟我说过，你所理解的前端还是过于狭隘，应该要看到更广阔的东西。举个很简单的例子：CSS。CSS曾被认为是设计师的语言，而不是程序员的语言，因为他的作用无非就是选择指定的标签加上样式效果，根本没有什么深入的东西。所以直到今天，仍然有很多人认为这是一门不用怎么学就可以精通的语言。从某种程度上讲，这样认为的，大部分只是新手或者没怎么写过web前端的人。真正要把这东西写好，从自身的表现，到与HTML/JS的配合，再到优化，提升团队效率等，是极不容易的。随着CSS的发展，她已不再是简单的标签语言，从代替table来布局，到响应式适配；从无章无法到模块化，甚至到SCSS/Stylus这些预处理器；从高级选择器到动画处理，再到像Google Material Design 页面间转场效果应用；从CSS icon sprite到icon font，再到svg/canvas的应用，她已不再是她（此段来自网络，说的好有道理)。CSS技术的发展并不只是增加一些新特性新接口这么简单，而是从根本上改变的CSS的开发方式。包括今年很火的AngularJS，简直颠覆了传统前端开发理念。这还只是冰山一角，前端的新技术层出不穷，比起其它技术领域变化都要快，这就注定一名前端工程师要是一个爱折腾的工程师。&lt;/p&gt;
 
 &lt;p&gt;前端涉及技术面非常广，但是并不“深”，这里的“深”并非说前端没有技术含量，而是说没有像诸如后台/系统工程师等深入计算机底层或算法研究。因此爱玩“深”技术的Geek们不愿意写前端，而爱设计的孩子们又不愿意写代码，所以将技术和设计完美结合在一起的任务就落在前端身上了。个人认为，前端的“深”不只是像一般程序员深入技术本身，也不是像设计师一样“深”入设计和交互，而是能兼顾两者，最终将产品以最完美的形态呈现给用户。因此，一个前端所要掌握的技能应该是要近乎全栈的：&lt;/p&gt;
 
-&lt;p&gt;HTML/CSS/JS等前端技术本身
-java/php/python/node 等服务端技术和脚本语言
-美术，设计和交互
-产品设计，毕竟是与用户最近的工程师
-除了第一项水很深之外，其他几项踩多深要看个人喜好。技术无止境，前端无下限，总之无限坑。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;HTML/CSS/JS等前端技术本身&lt;/li&gt;
+&lt;li&gt;java/php/python/node 等服务端技术和脚本语言&lt;/li&gt;
+&lt;li&gt;美术，设计和交互&lt;/li&gt;
+&lt;li&gt;产品设计，毕竟是与用户最近的工程师&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;招聘&lt;/p&gt;
+&lt;p&gt;除了第一项水很深之外，其他几项踩多深要看个人喜好。技术无止境，前端无下限，总之无限坑。&lt;/p&gt;
 
-&lt;p&gt;实习生招聘4月开始的吧，面试的第一家就是企鹅。人生的第一场面试啊~想想都好激动~。结果一面时就惨跪了…….于是又继续投了阿里，然后很开心的笔试就被刷了。后来又投了熊掌，一面过了，但是过了快一个月才来二面，由于是电面，而且当时信号差，电话断了四五次。还没面试完我就已经心凉了。大公司想是没戏了，于是直奔小公司。等拿到实习offer的时候，居然又接到了熊掌公司的电话，说有个三面……呵呵，当时就尴尬了，这么捉弄我，我还不去了……&lt;/p&gt;
+&lt;h2 id=&#34;招聘&#34;&gt;招聘&lt;/h2&gt;
+
+&lt;p&gt;实习生招聘4月开始的吧，面试的第一家就是企鹅。人生的第一场面试啊~想想都好激动~。结果一面时就惨跪了…….于是又继续投了阿里，然后很开心的笔试就被刷了。后来又投了熊掌，一面过了，但是过了快一个月才来二面，由于是电面，而且当时信号差，电话断了四五次。还没面试完我就已经心凉了。大公司想是没戏了，于是直奔小公司。等拿到实习offer的时候，居然又接到了熊掌公司的电话，说有个三面，当时我就尴尬了，现在才打电话过来，我还不去了。&lt;/p&gt;
 
 &lt;p&gt;于是7月份去了广州实习。刚“出世”时总是带着几分好奇和激情，很认真的去学习去工作。每天都很规律，日子也过得安逸，于是没过多久，这种规律和安逸变成了无聊。它迫使你去思考一些东西。这些东西不是你在这里是否有良好发展前景，你能否在这里升职加薪，因为这些问题在找工作前就应该考虑到。所以让我更迷茫的是：这是否就是我今后的生活？&lt;/p&gt;
 
-&lt;p&gt;广州的气候属于湿热型，夏天在外面呆着感觉就像做天然桑拿一样。可能是自己习惯了干热型气候，对于这种城市只能归类为“不适宜居住”的城市之列。不过抛去“自然”因素，羊城的“人文”特色倒是蛮吸引人的，比起大武汉要好玩的多，除去“热带风情”，岭南文化，城建特色这些东西，印象最为深刻的就是————在这里买衣服都好便宜！！！&lt;/p&gt;
+&lt;p&gt;广州的气候属于湿热型，夏天在外面呆着感觉就像做天然桑拿一样。可能是自己习惯了干热型气候，对于这种城市只能归类为“不适宜居住”的城市之列。不过抛去“自然”因素，羊城的“人文”特色倒是蛮吸引人的，比起大武汉要好玩的多，除去“热带风情”，岭南文化，城建特色这些东西，印象最为深刻的就是——在这里买衣服都好便宜！！！&lt;/p&gt;
 
-&lt;p&gt;实习公司在软件园那边，每天朝九晚六，近一个多月时间，其实有一大半的时间在进行培训学习。我是测试开发，正规工作其实就是玩游戏，写测试用例和脚本。工作难度并不大，同事们也都很好(几乎都是漂亮妹子~)对于一个应届生来说，能有个月薪过万，工作还很轻松的job应该算是不错了，可就是这样过于“安稳”的工作，让我感觉是在浪费青春。&lt;/p&gt;
+&lt;p&gt;实习公司在软件园那边，每天朝九晚六，近一个多月时间，其实有一大半的时间在进行培训学习，每天就做做作业打打游戏。工作难度并不大，同事们也都很好。对于一个应届生来说，能有个月薪过万，工作还很轻松的job应该算是不错了，可就是这样过于“安稳”的工作，让我感觉是在浪费青春。&lt;/p&gt;
 
 &lt;p&gt;进一步来看，只要选择工作，无论是在大公司还是小公司，每天必定都是按部就班的，虽然工作上会让你遵循DRY原则，但是生活上其实每天都在Reapt Yourself。这是一个普遍问题，读书，工作，谈恋爱，如果不是真爱，早晚得分开。于是乎我又花了几个星期来调整心态和思考人生（此处省略千万字），最终辞了广州的实习，9月份回学校参加校园招聘。&lt;/p&gt;
 
-&lt;p&gt;实招的时候其实还蛮迷茫的，不知道自己真正适合什么，四家公司投了四个不同的岗位(后台，系统，测试，产品都投了，现在想想真是吓死了)。校招的时候就明确多了，只投了前端开发，顺利拿到了阿里的offer。面试过程还是蛮顺利的，阿里的面试效率是我见过的公司中最高的，三轮面试一个上午就结束了。至于招聘要求，大概是笔试的时候会pass掉专业基础不行的，一面会pass技术不成熟和表达能力不行的，二面会pass没有亮点的，三面pass人品不行的(应该不会有人死在这里吧…)，如果是特别牛逼人还会有个交叉技术面试。所以最终能够通过面试的大多是研究生，想我一本科生能走到这里，也是蛮幸运的。&lt;/p&gt;
+&lt;p&gt;实招的时候其实还蛮迷茫的，不知道自己真正适合什么，四家公司投了四个不同的岗位(因为当时在团队干的活比较杂，以为多投机会会更大，所以后台，系统，测试，产品都投了，现在想想真是吓死了，我真特么牛逼，难怪会翻车)。校招的时候就明确多了，只投了前端开发，顺利拿到了阿里的offer。面试过程还是蛮顺利的，阿里的面试效率是我见过的公司中最高的，三轮面试一个上午就结束了。至于招聘要求，大概是笔试的时候会pass掉专业基础不行的，一面会pass技术不成熟和表达能力不行的，二面会pass没有亮点的，三面pass人品不行的(应该不会有人死在这里吧&amp;hellip;)，如果是特别牛逼人还会有个交叉技术面试。所以最终能够通过面试的大多是研究生，想我一本科生能走到这里，也是蛮幸运的。&lt;/p&gt;
 
-&lt;p&gt;之后又拒绝了两家公司的面试邀请，因为我很清楚我现在想要的是什么，以及以现在的能力我能做什么。总的来说，整个招聘期间只面了四家公司，一家失败，一家放弃，两家成功。没有像那些大神一样当offer收割机，一是人家确实牛逼，我等望尘莫及;二是，总感觉这种行为就跟找备胎一样，好不道德。&lt;/p&gt;
+&lt;p&gt;之后又拒绝了两家公司的面试邀请，因为我很清楚我现在想要的是什么，以及以现在的能力我能做什么。总的来说，整个招聘期间只面了四家公司，一家失败，一家放弃，两家成功，还不算坏。&lt;/p&gt;
 
-&lt;p&gt;未来&lt;/p&gt;
+&lt;h2 id=&#34;未来&#34;&gt;未来&lt;/h2&gt;
 
 &lt;p&gt;这一路走来不容易，但都在计划之中。遇到过各种各样的人，无论是相信我的还是怀疑我的，都要谢谢你们。当你处在人生低谷时，当你正在执着追求着自己想要的东西时，很容易会引来周围怀疑的目光与轻视，可悲的是这些目光不是来自陌生人，而是来自身边的亲戚和朋友。大学给了我们充足的时间去思考自己的未来将会是怎样一种人生，如果觉得时间不够，可以花更多的时间都没关系。无论是工作，读研，还是创业，找到最适合自己的才是最好的，或许现在所处的状态并不如意，或许现在正处在最艰难的时期，或许就算一直努力也不会有结果，但如果现在放弃了，就会一无所有。&lt;/p&gt;
 
 &lt;p&gt;最后，借马云IPO路演时一句话：今天很不容易，明天更加困难，但是未来是无限美好的。因此，我们必须更加努力，才能够在未来的漫漫征程中赢得胜利。&lt;/p&gt;
 
-&lt;p&gt;小时候喜欢看动画片，于是上课的时候经常在下面画画，梦想着当一名漫画家。由于漫画画的好，考上了当地最好的一所初中。城里比乡下好，眼界更加开阔了，觉得画漫画挣不了钱，于是梦想就进化成了一名动画师，要做出好多好看的动画片。后来觉得国漫太让人捉急了，做动画师无法拯救世界，于是梦想就超进化成了动画导演，要做一名像宫崎骏一样的大师，去影响世界。初中毕业时老师叫谈谈梦想，我说我想考XX美院，要从事动画媒体事业。老师说美院什么的是给土豪准备的，一般人想想就可以了，不要太认真。我认真地思考了一下，觉得老师说的好有道理，于是顺利的考上了当地最好的一所高中。从那以后上课再也不画漫画了，人变机智了，成绩也变好了，妈妈再也不用担心我学习了~&lt;/p&gt;
-
-&lt;p&gt;就这样，我顺利的考入了一所很基情的大学，梦想也被究极进化成了一名程序员，程序员，序员，猿……啊呜，现在，算是拿到了一份很不错的offer，找到了一份很适合自己的job，迭代的梦想就这样实现了，好高兴，好心塞。&lt;/p&gt;
-
-&lt;p&gt;前端&lt;/p&gt;
-
-&lt;p&gt;记得刚开始学前端的时候感觉倒是蛮简单的。我想正是因为如此底的门槛，导致许多程序员认为前端没有多大技术含量。但是，随着学习的深入，我发现前端比想象的要复杂的多。包括面试官也跟我说过，你所理解的前端还是过于狭隘，应该要看到更广阔的东西。举个很简单的例子：CSS。CSS曾被认为是设计师的语言，而不是程序员的语言，因为他的作用无非就是选择指定的标签加上样式效果，根本没有什么深入的东西。所以直到今天，仍然有很多人认为这是一门不用怎么学就可以精通的语言。从某种程度上讲，这样认为的，大部分只是新手或者没怎么写过web前端的人。真正要把这东西写好，从自身的表现，到与HTML/JS的配合，再到优化，提升团队效率等，是极不容易的。随着CSS的发展，她已不再是简单的标签语言，从代替table来布局，到响应式适配；从无章无法到模块化，甚至到SCSS/Stylus这些预处理器；从高级选择器到动画处理，再到像Google Material Design 页面间转场效果应用；从CSS icon sprite到icon font，再到svg/canvas的应用，她已不再是她（此段来自网络，说的好有道理)。CSS技术的发展并不只是增加一些新特性新接口这么简单，而是从根本上改变的CSS的开发方式。包括今年很火的AngularJS，简直颠覆了传统前端开发理念。这还只是冰山一角，前端的新技术层出不穷，比起其它技术领域变化都要快，这就注定一名前端工程师要是一个爱折腾的工程师。&lt;/p&gt;
-
-&lt;p&gt;前端涉及技术面非常广，但是并不“深”，这里的“深”并非说前端没有技术含量，而是说没有像诸如后台/系统工程师等深入计算机底层或算法研究。因此爱玩“深”技术的Geek们不愿意写前端，而爱设计的孩子们又不愿意写代码，所以将技术和设计完美结合在一起的任务就落在前端身上了。个人认为，前端的“深”不只是像一般程序员深入技术本身，也不是像设计师一样“深”入设计和交互，而是能兼顾两者，最终将产品以最完美的形态呈现给用户。因此，一个前端所要掌握的技能应该是要近乎全栈的：&lt;/p&gt;
-
-&lt;p&gt;HTML/CSS/JS等前端技术本身
-java/php/python/node 等服务端技术和脚本语言
-美术，设计和交互
-产品设计，毕竟是与用户最近的工程师
-除了第一项水很深之外，其他几项踩多深要看个人喜好。技术无止境，前端无下限，总之无限坑。&lt;/p&gt;
-
-&lt;p&gt;招聘&lt;/p&gt;
-
-&lt;p&gt;实习生招聘4月开始的吧，面试的第一家就是企鹅。人生的第一场面试啊~想想都好激动~。结果一面时就惨跪了…….于是又继续投了阿里，然后很开心的笔试就被刷了。后来又投了熊掌，一面过了，但是过了快一个月才来二面，由于是电面，而且当时信号差，电话断了四五次。还没面试完我就已经心凉了。大公司想是没戏了，于是直奔小公司。等拿到实习offer的时候，居然又接到了熊掌公司的电话，说有个三面……呵呵，当时就尴尬了，这么捉弄我，我还不去了……&lt;/p&gt;
-
-&lt;p&gt;于是7月份去了广州实习。刚“出世”时总是带着几分好奇和激情，很认真的去学习去工作。每天都很规律，日子也过得安逸，于是没过多久，这种规律和安逸变成了无聊。它迫使你去思考一些东西。这些东西不是你在这里是否有良好发展前景，你能否在这里升职加薪，因为这些问题在找工作前就应该考虑到。所以让我更迷茫的是：这是否就是我今后的生活？&lt;/p&gt;
-
-&lt;p&gt;广州的气候属于湿热型，夏天在外面呆着感觉就像做天然桑拿一样。可能是自己习惯了干热型气候，对于这种城市只能归类为“不适宜居住”的城市之列。不过抛去“自然”因素，羊城的“人文”特色倒是蛮吸引人的，比起大武汉要好玩的多，除去“热带风情”，岭南文化，城建特色这些东西，印象最为深刻的就是————在这里买衣服都好便宜！！！&lt;/p&gt;
-
-&lt;p&gt;实习公司在软件园那边，每天朝九晚六，近一个多月时间，其实有一大半的时间在进行培训学习。我是测试开发，正规工作其实就是玩游戏，写测试用例和脚本。工作难度并不大，同事们也都很好(几乎都是漂亮妹子~)对于一个应届生来说，能有个月薪过万，工作还很轻松的job应该算是不错了，可就是这样过于“安稳”的工作，让我感觉是在浪费青春。&lt;/p&gt;
-
-&lt;p&gt;进一步来看，只要选择工作，无论是在大公司还是小公司，每天必定都是按部就班的，虽然工作上会让你遵循DRY原则，但是生活上其实每天都在Reapt Yourself。这是一个普遍问题，读书，工作，谈恋爱，如果不是真爱，早晚得分开。于是乎我又花了几个星期来调整心态和思考人生（此处省略千万字），最终辞了广州的实习，9月份回学校参加校园招聘。&lt;/p&gt;
-
-&lt;p&gt;实招的时候其实还蛮迷茫的，不知道自己真正适合什么，四家公司投了四个不同的岗位(后台，系统，测试，产品都投了，现在想想真是吓死了)。校招的时候就明确多了，只投了前端开发，顺利拿到了阿里的offer。面试过程还是蛮顺利的，阿里的面试效率是我见过的公司中最高的，三轮面试一个上午就结束了。至于招聘要求，大概是笔试的时候会pass掉专业基础不行的，一面会pass技术不成熟和表达能力不行的，二面会pass没有亮点的，三面pass人品不行的(应该不会有人死在这里吧…)，如果是特别牛逼人还会有个交叉技术面试。所以最终能够通过面试的大多是研究生，想我一本科生能走到这里，也是蛮幸运的。&lt;/p&gt;
-
-&lt;p&gt;之后又拒绝了两家公司的面试邀请，因为我很清楚我现在想要的是什么，以及以现在的能力我能做什么。总的来说，整个招聘期间只面了四家公司，一家失败，一家放弃，两家成功。没有像那些大神一样当offer收割机，一是人家确实牛逼，我等望尘莫及;二是，总感觉这种行为就跟找备胎一样，好不道德。&lt;/p&gt;
-
-&lt;p&gt;未来&lt;/p&gt;
-
-&lt;p&gt;这一路走来不容易，但都在计划之中。遇到过各种各样的人，无论是相信我的还是怀疑我的，都要谢谢你们。当你处在人生低谷时，当你正在执着追求着自己想要的东西时，很容易会引来周围怀疑的目光与轻视，可悲的是这些目光不是来自陌生人，而是来自身边的亲戚和朋友。大学给了我们充足的时间去思考自己的未来将会是怎样一种人生，如果觉得时间不够，可以花更多的时间都没关系。无论是工作，读研，还是创业，找到最适合自己的才是最好的，或许现在所处的状态并不如意，或许现在正处在最艰难的时期，或许就算一直努力也不会有结果，但如果现在放弃了，就会一无所有。&lt;/p&gt;
-
-&lt;p&gt;最后，借马云IPO路演时一句话：今天很不容易，明天更加困难，但是未来是无限美好的。因此，我们必须更加努力，才能够在未来的漫漫征程中赢得胜利。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;2014.09，武汉&lt;/p&gt;
+&lt;/blockquote&gt;
 </description>
     </item>
     
