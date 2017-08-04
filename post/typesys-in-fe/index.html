@@ -125,13 +125,13 @@ brew install flow
 </code></pre>
 
 <p>然后在VSC中安装启用vscode-flow插件,  ⌘+&rsquo; 打开用户配置，禁用VSC自带的JavaScript校验功能(设置javascript.validate.enable为 false)，并设置好flow的安装目录：
-<img src="//segmentfault.com/img/bVDu2Y" alt="图片描述" /></p>
+<img src="//sfault-image.b0.upaiyun.com/327/685/327685980-57e52ab392ae2_articlex" alt="图片描述" /></p>
 
 <p>剩下的套路就跟Babel，ESLint一样了，在项目根目录下面建立一个.flowconfig文件，配置一些校验规则：
-<img src="//segmentfault.com/img/bVDsq4" alt="图片描述" /></p>
+<img src="//sfault-image.b0.upaiyun.com/207/257/2072576123-57e4404200683_articlex" alt="图片描述" /></p>
 
 <p>vscode-flow插件检测到.flowconfig配置后就会启动flow服务去实时分析项目代码，当你开发的时候就能感受到比原生编辑器更加强大的自动补全和智能提示了。比如当你require一个util模块时，flow能分析出util模块内结构，并且当你调用util方法不当时给出提示：
-<img src="//segmentfault.com/img/bVDu4k" alt="图片描述" /></p>
+<img src="//sfault-image.b0.upaiyun.com/200/580/2005809256-57e52e1ebcc7f_articlex" alt="图片描述" /></p>
 
 <p>以上只是介绍简单流程，并且还是无侵入式的校验，如果再加上手动类型声明的话，还能提供更多功能。</p>
 
@@ -140,7 +140,7 @@ brew install flow
 <p>TS的做法更彻底，如果有一个全新的项目可以自由选择技术方案的话，我一定会选TypeScript而不是Flow.js。可惜的是，在公司里面大部分时候都依赖公司自身的技术体系，在做技术选型的时候都要依赖团队的技术栈。就比如大家都用ES6，你选择TypeScript，那么之后别人来维护你的代码成本就非常高，除非你能煽动整个团队，整个集团使用：）一般情况下这是不可能的，我想这也是TS难以普及的重要原因。</p>
 
 <p>但是，这并不妨碍TypeScript成为一门优雅的前端开发语言。ES6有的它都有，ES6没有他也有（泛型/枚举/类型推导等只有强类型语言才有的一些特性），而这些特性恰恰更加适合日益壮大的工程化的前端，适合编写出可维护性代码。再配合微软自家的VSC，开发体验妥妥的：
-<img src="//segmentfault.com/img/bVDvaS" alt="图片描述" /></p>
+<img src="//sfault-image.b0.upaiyun.com/126/200/1262003556-57e53c82b3037_articlex" alt="图片描述" /></p>
 
 <p>至于TypeScript 2.0带来了哪些新特性，请直接戳GitHub：
 <a href="https://github.com/Microsoft/TypeScript/wiki/What%27s-new-in-TypeScript">https://github.com/Microsoft/TypeScript/wiki/What%27s-new-in-TypeScript</a></p>
@@ -148,12 +148,12 @@ brew install flow
 <h2 id="未来趋势">未来趋势</h2>
 
 <p>前几日GitHub 发布了2016开源报告，JavaScript众望所归的荣登榜首，让众前端激动不已：
-<img src="//segmentfault.com/img/bVDsql" alt="图片描述" /></p>
+<img src="//sfault-image.b0.upaiyun.com/199/416/1994165838-57e434f4afa7d_articlex" alt="图片描述" /></p>
 
 <p>然而让我意外的不是排在第一的JavaScript，而是最后的TypeScript：
-<img src="//segmentfault.com/img/bVDsqn" alt="图片描述" /></p>
+<img src="//sfault-image.b0.upaiyun.com/227/244/227244450-57e435d071ea8_articlex" alt="图片描述" /></p>
 
-<p><img src="//segmentfault.com/img/bVDsqo" alt="图片描述" /></p>
+<p><img src="//sfault-image.b0.upaiyun.com/276/254/2762546646-57e435e3a2433_articlex" alt="图片描述" /></p>
 
 <p>看这增长趋势，微软是要协TypeScript在开源之路上越走越远了。</p>
 

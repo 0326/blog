@@ -67,7 +67,7 @@
 
 <p>通过设置drawImage参数可以实现图片绘制、缩放、拉伸和裁剪等操作(<code>注意canvas无法绘制体积过大图片，否则会卡甚至崩掉，大图可以分块读取绘制</code>)：</p>
 
-<p><img src="http://7xp4vm.com1.z0.glb.clouddn.com/canvas_drawImage_DEMO_-_JS_Bin.png-q80" alt="图片描述" /></p>
+<p><img src="//7xp4vm.com1.z0.glb.clouddn.com/canvas_drawImage_DEMO_-_JS_Bin.png-q80" alt="图片描述" /></p>
 
 <blockquote>
 <p>详细用法参考 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/drawImage">drawImage()</a>，DEMO源码戳这里 <a href="http://jsbin.com/nuqojowayi/edit?html,output">JS Bin</a>.</p>
@@ -103,7 +103,7 @@ img.onload = () =&gt; {
 }
 </code></pre>
 
-<p><img src="http://segmentfault.com/img/bVHTYo" alt="图片描述" /></p>
+<p><img src="//sfault-image.b0.upaiyun.com/383/483/3834833829-58706ff1760a3_articlex" alt="图片描述" /></p>
 
 <blockquote>
 <p>详细用法参考 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/getImageData">getImageData()</a> 和  <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/putImageData">putImageData()</a>，DEMO源码戳这里 <a href="https://jsfiddle.net/vghszt61/2/">JSFiddle</a>.</p>
@@ -123,7 +123,7 @@ canvas.toDataURL(&quot;image/jpeg&quot;, 0.1) // 存储为质量为0.1的jpeg
 
 <p>由于存储形式是base64编码，原来图片的每三个字节都会被扩展成4字节，所以整体上编码后数据会比原来多约1/3。以下是通过toDataURL存储后的图片和原图大小相关对比数据(<code>数据仅供参考，不具通用性</code>)：</p>
 
-<p><img src="http://7xp4vm.com1.z0.glb.clouddn.com/yy.jpg" alt="图片描述" /></p>
+<p><img src="//7xp4vm.com1.z0.glb.clouddn.com/yy.jpg" alt="图片描述" /></p>
 
 <p>可见存储后图片体积并不是原来的4/3，实际上处理后的图片都会比原图大好几倍，并且不同的图片增大的体积也是不确定的。如果是要上传图片到服务器，可以把base64转化成Blob二进制数据压缩上传；如果要直接在前端显示或供用户下载，jpg还好可以设置质量参数，要是png就没法压缩了。</p>
 
@@ -187,7 +187,7 @@ canvas.toDataURL(&quot;image/jpeg&quot;, 0.1) // 存储为质量为0.1的jpeg
 
 <p>最后介绍个小工具<a href="http://quanfeng.tech/trimpng/">TrimPNG</a>。大家都知道<a href="https://tinypng.com/">TinyPNG</a>可以压缩PNG, <a href="http://quanfeng.tech/trimpng/">TrimPNG</a>顾名思义就是去除图片空白和白边的，实现了自动抠图和切图的功能（logo我是直接抄的TinyPNG，都是熊猫，应该不要紧😝）</p>
 
-<p><img src="http://segmentfault.com/img/bVHV0v" alt="图片描述" /></p>
+<p><img src="//sfault-image.b0.upaiyun.com/448/077/448077878-5871e8180d77c_articlex" alt="图片描述" /></p>
 
 <p>用到的技术点上面都说到了，裁切实现原理就是横向纵向分别扫描两次像素点阵，找出上下左右最外面的非透明点，然后定位出有效图像区域。<del>去除白边算法目前还比较傻逼，只要是接近白色的点都被我干掉了，后面再完善好了</del> 去白边算法优化了一下，采用标记清除策略（听着耳熟吧，其实就是从GC受的启发&hellip;），先扫描一遍标记出可疑白点，然后再扫描一遍，凡是与透明区域相邻的可疑白点就清除，当然这个算法也比较死，如果有更专业更智能的请务必告诉我。</p>
 
