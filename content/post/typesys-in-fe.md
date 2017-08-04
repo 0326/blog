@@ -110,10 +110,10 @@ https://github.com/Microsoft/TypeScript/wiki/What%27s-new-in-TypeScript
 私认为，无论最后是不是TypeScript，类型系统都带来了更好的开发体验，代码质量，代码可读性和可维护性，这正是一个大型或长期项目所必须的，也是现在和未来的前端工程所需要的。所以实在是没有不学的理由，如果你觉得TypeScript像极了C#更适合后端程序员，那么学习它或许是你迈向全栈的一小步哈哈。
 
 
-  [1]: //segmentfault.com/img/bVDu2Y
-  [2]: //segmentfault.com/img/bVDsq4
-  [3]: //segmentfault.com/img/bVDu4k
-  [4]: //segmentfault.com/img/bVDvaS
-  [5]: //segmentfault.com/img/bVDsql
-  [6]: //segmentfault.com/img/bVDsqn
-  [7]: //segmentfault.com/img/bVDsqo
+  [1]: //sfault-image.b0.upaiyun.com/327/685/327685980-57e52ab392ae2_articlex
+  [2]: //sfault-image.b0.upaiyun.com/207/257/2072576123-57e4404200683_articlex
+  [3]: //sfault-image.b0.upaiyun.com/200/580/2005809256-57e52e1ebcc7f_articlex
+  [4]: //sfault-image.b0.upaiyun.com/126/200/1262003556-57e53c82b3037_articlex
+  [5]: //sfault-image.b0.upaiyun.com/199/416/1994165838-57e434f4afa7d_articlex
+  [6]: //sfault-image.b0.upaiyun.com/227/244/227244450-57e435d071ea8_articlex
+  [7]: //sfault-image.b0.upaiyun.com/276/254/2762546646-57e435e3a2433_articlex

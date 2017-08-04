@@ -14,7 +14,7 @@ disqusShortname = "动感小前端"
 	bio = "coder && photographer && peregrinator && false"
 	# Enter optionally your twitter account
 	twitter = "Your Twitter account"
-	enableRSS = true
+	enableRSS = false
 
 	# Add custom assets with their paths relative to the static folder
 	customCSS = []

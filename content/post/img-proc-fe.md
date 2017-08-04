@@ -1,7 +1,7 @@
 +++
 date = "2017-01-08T21:42:50+08:00"
 title = "前端图像处理指南"
-description = "纯前端来实现图像缩放/裁切/旋转/滤镜/压缩/去白..."
+description = "纯前端来实现图像缩放/裁切/旋转/滤镜/压缩/去白边..."
 draft = false
 
 +++
@@ -121,7 +121,7 @@ SVG遵循XML规范，可以很好的集成在HTML里面，同时支持JS脚本�
 > 本文只抛砖，作为工作时技能储备，如有任何补充欢迎留言交流：）
 
 
-  [1]: http://7xp4vm.com1.z0.glb.clouddn.com/canvas_drawImage_DEMO_-_JS_Bin.png-q80
-  [2]: http://segmentfault.com/img/bVHTYo
-  [3]: http://7xp4vm.com1.z0.glb.clouddn.com/yy.jpg
-  [4]: http://segmentfault.com/img/bVHV0v
+  [1]: //7xp4vm.com1.z0.glb.clouddn.com/canvas_drawImage_DEMO_-_JS_Bin.png-q80
+  [2]: //sfault-image.b0.upaiyun.com/383/483/3834833829-58706ff1760a3_articlex
+  [3]: //7xp4vm.com1.z0.glb.clouddn.com/yy.jpg
+  [4]: //sfault-image.b0.upaiyun.com/448/077/448077878-5871e8180d77c_articlex

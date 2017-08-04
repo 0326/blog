@@ -238,9 +238,8 @@ Helvetica字体完美支持：
 
 一张图总结一下：
 
-![各平台默认字体对比](http://upload-images.jianshu.io/upload_images/1665040-3d5de633b781d7e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![各平台默认字体对比](http://7xp4vm.com1.z0.glb.clouddn.com/WX20170319-123733@2x.png)
 
-哦，忘了还有Windows Phone，WP默认英文字体是Segoe，中文字体在WP8以前是雅黑，WP8之后是方正等线体。
 
 哦，忘了还有YunOS，貌似是方正兰亭细黑...
 
