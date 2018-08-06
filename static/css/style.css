@@ -310,8 +310,8 @@ em, i {
 }
 
 .post h2 {
-    margin-bottom: 40px;
-    font: 300 24px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin: 20px 0 5px 0;
+    font: 400 24px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #111;
 }
 
