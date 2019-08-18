@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on 动感小前端的博客</title>
-    <link>http://quanfeng.tech/blog/post/index.xml</link>
+    <link>https://0326.github.io/blog/post/index.xml</link>
     <description>Recent content in Posts on 动感小前端的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Sat, 21 Jul 2018 21:42:50 +0800</lastBuildDate>
-    <atom:link href="http://quanfeng.tech/blog/post/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://0326.github.io/blog/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>小前端三周年杂记</title>
-      <link>http://quanfeng.tech/blog/post/ali-three-year/</link>
+      <link>https://0326.github.io/blog/post/ali-three-year/</link>
       <pubDate>Sat, 21 Jul 2018 21:42:50 +0800</pubDate>
       
-      <guid>http://quanfeng.tech/blog/post/ali-three-year/</guid>
+      <guid>https://0326.github.io/blog/post/ali-three-year/</guid>
       <description>
 
 &lt;p&gt;一个工作三年的前端，应该是市场上的香饽饽了，同时也会步入焦虑区，会更多的思考未来的职业生涯。这三年过于顺利，反而有些不安。按照惯例，行文以省。&lt;/p&gt;
@@ -108,10 +108,10 @@
     
     <item>
       <title>小前端两周年杂记</title>
-      <link>http://quanfeng.tech/blog/post/ali-two-year/</link>
+      <link>https://0326.github.io/blog/post/ali-two-year/</link>
       <pubDate>Mon, 24 Jul 2017 21:42:50 +0800</pubDate>
       
-      <guid>http://quanfeng.tech/blog/post/ali-two-year/</guid>
+      <guid>https://0326.github.io/blog/post/ali-two-year/</guid>
       <description>
 
 &lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
@@ -241,10 +241,10 @@
     
     <item>
       <title>如何优雅地理解 ECMAScript 中的对象</title>
-      <link>http://quanfeng.tech/blog/post/ecmascript-object/</link>
+      <link>https://0326.github.io/blog/post/ecmascript-object/</link>
       <pubDate>Sat, 24 Jun 2017 21:42:50 +0800</pubDate>
       
-      <guid>http://quanfeng.tech/blog/post/ecmascript-object/</guid>
+      <guid>https://0326.github.io/blog/post/ecmascript-object/</guid>
       <description>
 
 &lt;h2 id=&#34;序&#34;&gt;序&lt;/h2&gt;
@@ -445,10 +445,10 @@ zhaoMin.__proto__ = Wife.prototype
     
     <item>
       <title>前端图像处理指南</title>
-      <link>http://quanfeng.tech/blog/post/img-proc-fe/</link>
+      <link>https://0326.github.io/blog/post/img-proc-fe/</link>
       <pubDate>Sun, 08 Jan 2017 21:42:50 +0800</pubDate>
       
-      <guid>http://quanfeng.tech/blog/post/img-proc-fe/</guid>
+      <guid>https://0326.github.io/blog/post/img-proc-fe/</guid>
       <description>
 
 &lt;p&gt;计算机图像处理是一门很成熟的技术，任何一门可操作系统接口的语言都能很轻易的实现各种处理操作。但是前端限于浏览器环境和接口限制，处理起来会有诸多不便，这里所说的前端图像处理，是真的指&lt;strong&gt;不借助任何后端服务&lt;/strong&gt;纯前端实现的图像处理。本文会介绍canvas位图处理，SVG矢量图和CSS3图像处理，重点是canvas，并且最后会附上一个&lt;a href=&#34;http://quanfeng.tech/trimpng/&#34;&gt;TrimPNG小应用&lt;/a&gt;。&lt;/p&gt;
@@ -595,10 +595,10 @@ canvas.toDataURL(&amp;quot;image/jpeg&amp;quot;, 0.1) // 存储为质量为0.1�
     
     <item>
       <title>类型系统-前端进化的里程碑</title>
-      <link>http://quanfeng.tech/blog/post/typesys-in-fe/</link>
+      <link>https://0326.github.io/blog/post/typesys-in-fe/</link>
       <pubDate>Fri, 23 Sep 2016 01:42:50 +0800</pubDate>
       
-      <guid>http://quanfeng.tech/blog/post/typesys-in-fe/</guid>
+      <guid>https://0326.github.io/blog/post/typesys-in-fe/</guid>
       <description>
 
 &lt;p&gt;大半夜的JavaScript Weekly发来贺电：&lt;a href=&#34;https://blogs.msdn.microsoft.com/typescript/2016/09/22/announcing-typescript-2-0/#comment-26185&#34;&gt;TypeScript 2.0 Final Released！&lt;/a&gt;&lt;/p&gt;
@@ -707,10 +707,10 @@ brew install flow
     
     <item>
       <title>Web 字体应用指南最佳实践修炼之道（上）</title>
-      <link>http://quanfeng.tech/blog/post/web-font-01/</link>
+      <link>https://0326.github.io/blog/post/web-font-01/</link>
       <pubDate>Sun, 21 Aug 2016 21:42:50 +0800</pubDate>
       
-      <guid>http://quanfeng.tech/blog/post/web-font-01/</guid>
+      <guid>https://0326.github.io/blog/post/web-font-01/</guid>
       <description>
 
 &lt;p&gt;&lt;img src=&#34;http://upload-images.jianshu.io/upload_images/1665040-7dbfec5bc0c6c8c9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&#34; alt=&#34;据说把名字取得特别长更容易被搜索到&#34; /&gt;&lt;/p&gt;
@@ -1075,10 +1075,10 @@ brew install flow
     
     <item>
       <title>小前端一周年杂记</title>
-      <link>http://quanfeng.tech/blog/post/ali-one-year/</link>
+      <link>https://0326.github.io/blog/post/ali-one-year/</link>
       <pubDate>Thu, 14 Jul 2016 21:42:50 +0800</pubDate>
       
-      <guid>http://quanfeng.tech/blog/post/ali-one-year/</guid>
+      <guid>https://0326.github.io/blog/post/ali-one-year/</guid>
       <description>
 
 &lt;p&gt;&lt;img src=&#34;https://img.alicdn.com/tps/TB1SBWoKVXXXXXMaFXXXXXXXXXX-1057-697.png&#34; alt=&#34;阿里一年香&#34; /&gt;&lt;/p&gt;
@@ -1218,10 +1218,10 @@ brew install flow
     
     <item>
       <title>如何成为一名Chrome应用开发者</title>
-      <link>http://quanfeng.tech/blog/post/chrome-webstore-dev/</link>
+      <link>https://0326.github.io/blog/post/chrome-webstore-dev/</link>
       <pubDate>Sun, 03 Apr 2016 21:42:50 +0800</pubDate>
       
-      <guid>http://quanfeng.tech/blog/post/chrome-webstore-dev/</guid>
+      <guid>https://0326.github.io/blog/post/chrome-webstore-dev/</guid>
       <description>
 
 &lt;p&gt;&lt;img src=&#34;http://upload-images.jianshu.io/upload_images/1665040-6d089496fdf86493.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&#34; alt=&#34;Chrome网上应用店&#34; /&gt;&lt;/p&gt;
@@ -1318,10 +1318,10 @@ brew install flow
     
     <item>
       <title>VR元年－感受虚拟现实的力量</title>
-      <link>http://quanfeng.tech/blog/post/vr2016/</link>
+      <link>https://0326.github.io/blog/post/vr2016/</link>
       <pubDate>Sat, 27 Feb 2016 21:42:50 +0800</pubDate>
       
-      <guid>http://quanfeng.tech/blog/post/vr2016/</guid>
+      <guid>https://0326.github.io/blog/post/vr2016/</guid>
       <description>
 
 &lt;h2 id=&#34;vr元年&#34;&gt;VR元年&lt;/h2&gt;
@@ -1448,10 +1448,10 @@ brew install flow
     
     <item>
       <title>创业红海-大学生创业实录</title>
-      <link>http://quanfeng.tech/blog/post/studengt-entreprencurship/</link>
+      <link>https://0326.github.io/blog/post/studengt-entreprencurship/</link>
       <pubDate>Thu, 01 Jan 2015 21:42:50 +0800</pubDate>
       
-      <guid>http://quanfeng.tech/blog/post/studengt-entreprencurship/</guid>
+      <guid>https://0326.github.io/blog/post/studengt-entreprencurship/</guid>
       <description>
 
 &lt;p&gt;&lt;img src=&#34;http://cdn1.tnwcdn.com/wp-content/blogs.dir/1/files/2015/12/Untitled-design-11.jpg&#34; alt=&#34;浅谈大学生创业&#34; /&gt;&lt;/p&gt;
@@ -1542,10 +1542,10 @@ brew install flow
     
     <item>
       <title>致2013的你</title>
-      <link>http://quanfeng.tech/blog/post/2013-summary/</link>
+      <link>https://0326.github.io/blog/post/2013-summary/</link>
       <pubDate>Sat, 01 Feb 2014 01:42:50 +0800</pubDate>
       
-      <guid>http://quanfeng.tech/blog/post/2013-summary/</guid>
+      <guid>https://0326.github.io/blog/post/2013-summary/</guid>
       <description>
 
 &lt;p&gt;弱冠之年,以为自己长大了，其实还是太年轻。生命的故事，就这样轮回的上演，永不停息。2013没有特别的意义，只是剧本稍微变得有些意思了。&lt;/p&gt;
