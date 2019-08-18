@@ -1,5 +1,5 @@
 # Site settings
-baseurl = "http://quanfeng.tech/blog/"
+baseurl = "https://0326.github.io/blog/"
 languageCode = "zh-CN"
 title = "动感小前端的博客"
 theme = "hugo-cactus-theme"
